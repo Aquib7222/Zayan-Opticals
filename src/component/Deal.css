@@ -1,0 +1,51 @@
+.container1 {
+    display: flex;         /* Create a flex container */
+    justify-content: center; /* Space out columns */
+    gap: 50px;             /* Add some space between columns */
+    height: 450px;
+    
+    margin: 30px 40px;
+  }
+
+  .column {
+    display: flex;         /* Create a flex container for each column */
+    flex-direction: column; /* Stack rows vertically within each column */
+    width: 70%;          /* Set the width of each column */
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .heading {
+    font-size: 1rem;     /* Make the heading larger */
+    text-align: center;    /* Center align the heading */
+    margin-bottom: 10px;   /* Space between heading and first row */
+    font-weight: bold;
+  }
+
+  .row {
+    /* border: 1px solid #ccc;  */
+    padding: 10px;
+    width: 100%;        
+    text-align: center;      /* Center-align text in rows */
+    height: 35%;
+  }
+/* .row:nth-child(1) {
+    background-color: lightcoral;
+} */
+.row img{
+    width: 100px;
+    height: 120px;
+}
+.deal img{
+    height: 200px;
+}
+.row1{
+    border: 1px solid #ccc;
+    height: 470px;
+}
+.row1 h6 {
+    text-align: center;
+}
+.row1 img{
+    margin-left: 15px;
+}

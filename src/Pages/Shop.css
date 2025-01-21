@@ -1,0 +1,192 @@
+.sidebar{
+    width: 280px;
+    height: 90vh;
+    background-color: white;
+    padding-top: 70px;
+}
+/* Basic styling for the dropdown */
+
+/* .Bar_and_Dropdown{
+  display: flex;
+  justify-content: center;
+} */
+.Bar_and_Dropdown {
+  display: flex; /* Align children elements horizontally */
+  justify-content: space-between; /* Push children to opposite ends */
+  align-items: center; /* Vertically align the items */
+  margin-left: 35px;
+}
+.dropdown-container {
+    display: flex;
+    justify-content: flex-end;  
+    margin: 20px;
+    padding: 10px;
+    
+  }
+  
+  select {
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  /* p {
+    font-size: 18px;
+    
+    margin-top: 10px;
+  } */
+  .Filter_Bar{
+    font-size: 24px; /* Adjust the size of the icon */
+    cursor: pointer; /* Show a pointer cursor on hover */
+  }
+
+  /* Sunglasses container */
+.sunglasses-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0px;
+    padding: 0px 20px 20px 20px;
+  }
+  
+  /* Each sunglasses item */
+  .sunglasses-item {
+    width: 24%;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Sunglasses item image */
+  .sunglasses-image {
+    width: 100%;
+    height: auto;
+    
+  }
+  
+  /* Hover effect for sunglasses item */
+
+  .sunglasses-item:hover {
+    transform: translateY(-5px);
+  } 
+  
+  /* Styling for the price */
+  .sunglasses-item p {
+    /* font-size: 18px; */
+    color: #333;
+   
+  }
+  
+  /* In Shop.css */
+
+.product-container {
+    position: relative;
+  }
+  
+  .sunglasses-image {
+    width: 100%;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Hide icons by default */
+  .product-icons {
+    position: absolute;
+    border: 1px solid grey;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    gap: 10px;
+  }
+  
+  /* Show icons when the user hovers over the product image */
+  .product-container:hover .product-icons {
+    display: flex;
+  }
+  
+  /* Style the individual icons */
+  .icon {
+    font-size: 40px;
+    color: rgb(10, 10, 10);
+   
+    padding: 10px;
+   
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Optional: Styling the icons' hover states for visual feedback */
+  .cart-icon:hover {
+    background-color: #ff5c5c;
+  }
+  
+  .wishlist-icon:hover {
+    background-color: #ffac33;
+  }
+  
+  .quickview-icon:hover {
+    background-color: #33cc99;
+  }
+ /* In your CSS file (e.g., Shop.css) */
+.view-details {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Ensure it inherits the color of the parent */
+}
+
+.view-details:hover {
+  text-decoration: none; /* Remove underline on hover as well */
+  color: #007bff; /* Optional: Change color on hover */
+}
+
+.sunglasses-container.grid {
+  justify-content: flex-start;
+}
+
+.sunglasses-container.list {
+  flex-direction: column;
+}
+
+.sunglasses-item.list-view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.sunglasses-item.list-view img{
+  height: 230px;
+  width: 400px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination-btn:hover {
+  background-color: #ddd;
+}
+
+.pagination-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+/* CSS for background blur when modal is open */

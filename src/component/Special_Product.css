@@ -1,0 +1,90 @@
+.Product{
+    /* display: flex; */
+    justify-content: center;
+    margin: 40px 30px;
+    padding: 10px;
+    
+    width: 96%;
+    height: 400px;
+    margin-bottom: 60px;
+    
+}
+.product_list{
+    display: flex;
+    justify-content: center;
+
+
+}
+.Product h2{
+    text-align: center;
+}
+.product_list ul{
+    list-style: none;
+    margin-top: 10px;
+}
+.product_list ul li{
+    display: inline;
+    margin: 0px 10px;
+    font-weight: 500;
+   
+    padding: 5px;
+}
+.product_list ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.Item_list{
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+.products{
+    display: inline;
+    width: 25%;
+    height: auto;
+    margin-right: 2px;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+}
+.products span{
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+.Item_list img{
+    width: 100%;
+    
+}
+/* Styles for the category list items */
+.list {
+    list-style: none;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.category-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    
+    font: inherit;
+    padding: 5px 10px;
+}
+
+/* Active state styling for the selected category */
+.list.active .category-btn {
+    /* background-color: #d3d3d3;  */
+    border: 1px solid black;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Optional focus styling */
+.category-btn:focus {
+    outline: none;
+}

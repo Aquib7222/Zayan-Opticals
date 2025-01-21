@@ -1,0 +1,33 @@
+/* .Slider_image{
+    filter: blur(4px);
+} */
+.para {
+    display: flex;
+    height: 60vh; /* Full height of the viewport */
+    width: 100%;
+    margin-top: 30px;
+  }
+  .left {
+    
+    
+    display: flex;
+    /* justify-content: center; */
+    
+    width: 30%;
+    padding: 10px;
+  }
+  .right {
+    flex: 1; /* Takes 50% of the space */
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+    
+  }
+  p {
+    margin: 0; /* Remove any default margin */
+    text-align: left; /* Align text to the left */
+    font-size: 16px; /* Set font size for consistency */
+    line-height: 2; /* Set line height for readability */
+
+  }

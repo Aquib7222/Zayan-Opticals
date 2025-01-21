@@ -1,0 +1,9 @@
+.sideBar_Product{
+    display: flex;
+
+}
+.sidebar{
+    height: 90vh;
+    padding-top: 100px;
+    margin-top: 10px;
+}

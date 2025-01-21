@@ -1,0 +1,94 @@
+.banner{
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.banner3{
+    background: url('../Images/banner-3.jpg');
+    height: 450px;
+    width: 50%;
+    margin: 0px 10px;
+    transition: background-size 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: 30px;
+    margin-bottom: 50px;
+}
+.banner3::after {
+    content: "";
+    background: url('../Images/banner-3.jpg') center center / cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 0.5s ease; /* Smooth transition */
+    transform: scale(1); /* Initial scale */
+    z-index: 1;
+}
+
+.banner3:hover::after {
+    transform: scale(1.1); /* Zoom in on hover */
+}
+.banner3 .content {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: translate(-50%, -50%); /* Center content */
+    color: white;
+    z-index: 2; /* Ensures content is above the background */
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.shop_btn{
+    background: transparent;
+    width: 150px;
+    height: 50px;
+    border: 1px solid black;
+    color: white;
+    margin-top: 20px ;
+    /* padding: 10px 0px ; */
+
+}
+.shop_btn:hover{
+    background-color: red;
+}
+.banner4{
+    background: url('../Images/banner-4.jpg');
+    height: 450px;
+    width: 50%;
+    margin: 0px 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 30px;
+    margin-bottom: 50px;
+   
+}
+.banner4::after {
+    content: "";
+    background: url('../Images/banner-4.jpg'); /*center center / cover no-repeat;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 0.5s ease; /* Smooth transition */
+    transform: scale(1); /* Initial scale */
+}
+
+.banner4:hover::after {
+    transform: scale(1.1); /* Zoom in on hover */
+}
+.banner4 .content {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: translate(-50%, -50%); /* Center content */
+    color: white;
+    z-index: 2; /* Ensures content is above the background */
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}

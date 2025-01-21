@@ -1,0 +1,33 @@
+.cart_details{
+    height: 230px;
+    width: 240x;
+}
+button{
+    /* border: 1px solid gray; */
+    padding: 2px 10px;
+    border: none;
+}
+input{
+    /* border: none; */
+    width: 200px;
+}
+.delete_Button{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    align-content: center;
+    transition: color 0.3s ease-out, transform 0.3s ease-out;
+}
+.delete_Button:hover{
+    transform: scale(1.2);
+}
+.payment_button{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: black;
+    color: white;
+}
+.clear_cart{
+    height: 40px;
+}

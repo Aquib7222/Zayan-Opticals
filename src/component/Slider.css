@@ -1,0 +1,8 @@
+#myimage{
+    height: 90vh;
+    width: 100%;
+}
+.Slider_image{
+    background-image: url(../Images/banner.jpeg);
+    backdrop-filter: blur;
+}
