@@ -10,11 +10,10 @@ import Special_Product from "../component/Special_Product";
 import Banner from "../component/Banner";
 import Deal from "../component/Deal";
 import React, { useEffect } from 'react';
-import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Banner_1 from "../component/Banner_1";
 import Brands from "../component/Brands";
-import Shipping from "../component/Shipping";
+
 
 function App() {
   
