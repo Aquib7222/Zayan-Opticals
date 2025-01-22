@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { BsCart } from "react-icons/bs";
 import { GiSunglasses } from "react-icons/gi";
 import { FaCartPlus } from "react-icons/fa";
-import { FaUserLarge } from "react-icons/fa6";
-function Header() {
+import { useAuth0 } from "@auth0/auth0-react";
+function Header({ loggedIn, userName, onLogout }) {
+  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
           <Link className="navbar-brand ms-5" to={"/"}>
-            ZAYAN OPTICALS <GiSunglasses style={{ height: "30px", }} />
+            ZAYAN OPTICALS <GiSunglasses style={{ height: "30px" }} />
           </Link>
           <button
             className="navbar-toggler"
@@ -25,42 +26,50 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto">
+
               <li className="nav-item">
                 <Link className="nav-link " aria-current="page" to={"/"}>
                   Home
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link className="nav-link" to={"/Shop"}>
                   Shop
                 </Link>
               </li>
-              
+
               <li className="nav-item">
                 <Link className="nav-link" to={"/About"}>
                   About
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link className="nav-link" to={"/Contact_Us"}>
                   Contact Us
                 </Link>
               </li>
-              <li className="nav-item">
+              
+              
+               <li className="nav-item">
                 <Link className="nav-link" to={"/Login"}>
-                  <button className="bg-danger text-white px-2 text-bold rounded-2">LOGIN</button>
+                  <button className="login-button px-2 bg-danger text-white">LOGIN</button>
                 </Link>
-              </li>
+               </li>
+
               <li>
                 {" "}
                 <Link className="nav-link" to={"/cart"}>
-                  {/* <FaCartPlus /> */}
-                  <FaCartPlus className="cart_icon"/> 
-                  <span style={{marginTop:"-10px"}}>10</span>
+                  
+                  <FaCartPlus
+                    className="cart_icon"
+                    style={{ height: "30px", width: "20px" }}
+                  />
+                  <span style={{ marginTop: "-10px", top: "0px" }}>10</span>
                 </Link>
               </li>
             </ul>
-           
           </div>
         </div>
       </nav>

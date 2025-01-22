@@ -14,6 +14,8 @@ import { CartProvider } from "./component/Context/CartContext.jsx";
 import Product_view from "./Pages/Product_view.jsx";
 import UserDashboard from "./Pages/UserDashboard.jsx";
 import Modal from "./component/Modal.jsx";
+import Admin from "./Pages/Admin.jsx";
+import { Auth0Provider } from '@auth0/auth0-react';
 // import { ProductProvider } from "./component/Context/ProductContext.jsx";
 
 const router = createBrowserRouter([
@@ -30,15 +32,20 @@ const router = createBrowserRouter([
   { path: "/Product_view", element: <Product_view /> },
   { path: "/Login", element: <Login /> },
   { path: "/Signup", element: <Signup /> },
-  { path: "/Login/UserDashboard",element: <UserDashboard/>},
-  { path: "/Modal", element: <Modal/>}
+  { path: "/Login/UserDashboard", element: <UserDashboard /> },
+  { path: "/Admin", element: <Admin/>},
+  { path: "/Modal", element: <Modal /> },
 ]);
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    {/* <ProductProvider> */}
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    {/* </ProductProvider> */}
-  </StrictMode>
+  <Auth0Provider
+    domain="dev-7ve5xkqhcrpob75x.us.auth0.com"
+    clientId="DPYAASNd5ei8ii8DeFOkCR3HBuPhD5Hb"
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}
+  >
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  </Auth0Provider>
 );
