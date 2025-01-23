@@ -8,6 +8,7 @@ body{
 .layout {
     display: flex;
     height: 100vh;
+    background-color: aliceblue;
   }
   
   .sidebar {
@@ -28,4 +29,9 @@ body{
   .content{
     width: 100%;
   }
+  .main-content{
+    overflow-y: auto; 
+    height: calc(100vh - 60px);
+  }
+ 
   

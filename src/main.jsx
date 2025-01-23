@@ -16,6 +16,7 @@ import UserDashboard from "./Pages/UserDashboard.jsx";
 import Modal from "./component/Modal.jsx";
 import Admin from "./Pages/Admin.jsx";
 import { Auth0Provider } from '@auth0/auth0-react';
+import ProductProvider from "./component/Context/AdminProductContext.jsx";
 // import { ProductProvider } from "./component/Context/ProductContext.jsx";
 
 const router = createBrowserRouter([
@@ -44,8 +45,10 @@ createRoot(document.getElementById("root")).render(
       redirect_uri: window.location.origin,
     }}
   >
+    <ProductProvider>
     <CartProvider>
       <RouterProvider router={router} />
     </CartProvider>
+    </ProductProvider>
   </Auth0Provider>
 );

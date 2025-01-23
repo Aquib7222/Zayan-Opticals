@@ -15,9 +15,9 @@ const Admin = () => {
         <div className={`content ${close ? "collapsed" : ""}`}>
           <AdminHeader close={close} setClose={setClose} />
           <div className="main-content">
-          <h5 className="text-start ms-2 mt-2 fw-6">DASHBOARD</h5>
+          <h5 className="text-start ms-2 mt-3 fw-6">DASHBOARD</h5>
           {/* Additional content can go here */}
-            <ProductCustomer/>
+            <ProductCustomer className="products_shows"/>
           </div>
         </div>
       </div>
