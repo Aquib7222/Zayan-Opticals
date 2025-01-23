@@ -50,8 +50,9 @@
   }
   
   .sidebar ul li {
-    padding: 10px 0;
+    padding: 10px 10px;
     cursor: pointer;
+    gap: 50px;
   }
   
   .sidebar.close ul {
@@ -66,7 +67,25 @@
     cursor: pointer;
   }
   
-  .sidebar.close ul {
-    display: none;
+  
+  .sidebar.close h4{
+    display: block;
+  }
+  .sidebar {
+    width: 250px;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar.close {
+    width: 0;
+    overflow: hidden;
+  }
+   
+ 
+  .content.collapsed {
+    margin-left: 0;
+  }
+  .sidebar ul li:hover{
+      background-color: rgb(209, 28, 28);
   }
   

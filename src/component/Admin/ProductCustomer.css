@@ -1,0 +1,11 @@
+.card-body{
+    cursor: pointer;
+    box-shadow: 5px 5px 15px rgba(231, 230, 230, 0.9);
+    
+}
+.card h5{
+    font-weight: 600;
+}
+.card p{
+    color: white;
+}
