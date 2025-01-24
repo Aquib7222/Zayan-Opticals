@@ -19,7 +19,7 @@ const [showWomensProduct, setShowWomensProduct] = useState(true);
           
           <div className="d-flex align-items-center">
             <h5 className="me-2">Womens Category :</h5>
-            <select className="text-uppercase">
+            <select className="">
               <option value="default">Default</option>
               <option value="aviator">Aviator Sunglasses</option>
               <option value="wayfarer">Wayfarer Sunglasses</option>

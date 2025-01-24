@@ -286,6 +286,7 @@ const ProductCustomer = () => {
     price: "",
     description: "",
     category: "",
+    Productcategory:"",
     image: null,
   });
 
@@ -328,6 +329,7 @@ const ProductCustomer = () => {
       price: formData.price,
       description: formData.description,
       category: formData.category,
+      Productcategory: formData.Productcategory,
       image: imageBase64,
     };
 
@@ -342,6 +344,7 @@ const ProductCustomer = () => {
       price: "",
       description: "",
       category: "",
+      Productcategory:"",
       image: null,
     });
     setShowAddProduct(false);
@@ -541,7 +544,24 @@ const ProductCustomer = () => {
                 <option value="Unisex">Unisex</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-danger mt-4 ms-auto">
+            <div className="col-2 mt-2">
+              <select
+                className="form-control"
+                name="Productcategory"
+                value={formData.Productcategory}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Product Category</option>
+                <option value="Wayfarer Sunglasses">Wayfarer Sunglasses</option>
+                <option value="Aviator sunglasses">Aviator sunglasses</option>
+                <option value="Sports Sunglasses">Sports Sunglasses</option>
+                <option value="Round Sunglasses">Round Sunglasses</option>
+                <option value="Rectangle Sunglasses">Rectangle Sunglasses</option>
+
+              </select>
+            </div>
+            <button type="submit" className="btn btn-danger mt-5 ms-auto w-25">
               Submit
             </button>
           </form>

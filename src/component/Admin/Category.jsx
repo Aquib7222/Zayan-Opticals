@@ -84,28 +84,28 @@ useEffect(() => {
               X
             </button>
 
-            <div className="mt-3 mb-3">
+            <div className="mt-3 mb-3 ">
               <button
-                className="category_button"
+                className="category_button fs-4"
                 onClick={() => setSelectedCategory("Mens")}
               >
                 Mens
-               
+                
               </button>
               <button
-                className="category_button"
+                className="category_button fs-4"
                 onClick={() => setSelectedCategory("Womens")}
               >
                 Womens
               </button>
               <button
-                className="category_button"
+                className="category_button fs-4"
                 onClick={() => setSelectedCategory("Kids")}
               >
                 Kids
               </button>
               <button
-                className="category_button"
+                className="category_button fs-4"
                 onClick={() => setSelectedCategory("Unisex")}
               >
                 Unisex
