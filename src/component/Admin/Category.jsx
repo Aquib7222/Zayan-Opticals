@@ -1,49 +1,4 @@
-// import "./Category.css";
-// import { MensCategory } from "./MensCategory";
 
-// export const Category = () => {
-//         const []
-//   return (
-//     <>
-//       <div className="products_show mt-3 mx-4">
-//         <h2>Category</h2>
-//         <button
-//           className="d-flex ms-auto"
-//           onClick={() => setShowProducts(false)}
-//         >
-//           X
-//         </button>
-//       </div>
-
-//       <div className="container d-flex mt-0">
-//         {/* mens start  */}
-//         <div className="row d-flex flex-wrap justify-content-center">
-//           <div className="col-md-3 category_name "onClick={()=>toggleMens(setShowMens(true))}>
-//             <h6>Mens</h6>
-//             <img src="" alt="" />
-
-//           </div>
-//           <div className="col-md-3 category_name"onClick={()=>toggleWomens()}>
-//             <h6>Womens</h6>
-//              <img src="" alt="" />
-//           </div>
-//           <div className="col-md-3 category_name"onClick={()=>toggleKids()}>
-//             <h6>Kids</h6>
-//              <img src="" alt="" />
-//           </div>
-//           <div className="col-md-3 category_name"onClick={()=>toggleUnisex()}>
-//             <h6>Unisex</h6>
-//              <img src="" alt="" />
-//           </div>
-//         </div>
-//         {/* mens end here */}
-
-//       </div>
-
-//       <MensCategory />
-//     </>
-//   );
-// };
 import React, { useState ,useEffect} from "react";
 import "./Category.css";
 import { MensCategory } from "./Category/MensCategory";

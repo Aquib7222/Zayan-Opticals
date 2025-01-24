@@ -267,13 +267,13 @@
 // };
 
 // export default ProductCustomer;
-
+// ------------------------------------------------------------------------------
 import React, { useState, useEffect } from "react";
 import "./ProductCustomer.css";
 import { IoAddCircle } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 import { Category } from "./Category";
-
+import { BsThreeDotsVertical } from "react-icons/bs";
 const ProductCustomer = () => {
   const [showProducts, setShowProducts] = useState(false);
   const [showAddProduct, setShowAddProduct] = useState(false);
@@ -286,7 +286,7 @@ const ProductCustomer = () => {
     price: "",
     description: "",
     category: "",
-    Productcategory:"",
+    subCategory:"",
     image: null,
   });
 
@@ -329,7 +329,7 @@ const ProductCustomer = () => {
       price: formData.price,
       description: formData.description,
       category: formData.category,
-      Productcategory: formData.Productcategory,
+      subCategory: formData.subCategory,
       image: imageBase64,
     };
 
@@ -344,7 +344,7 @@ const ProductCustomer = () => {
       price: "",
       description: "",
       category: "",
-      Productcategory:"",
+      subCategory:"",
       image: null,
     });
     setShowAddProduct(false);
@@ -411,7 +411,7 @@ const ProductCustomer = () => {
 
       {/* Show Product List Section */}
       {showProducts && !showAddProduct && (
-        <div className="products_show mt-3 mx-4">
+        <div className="products_show mt-3 mx-4 " >
           <h2>Product List</h2>
           <button
             className="d-flex ms-auto btn btn-danger"
@@ -428,10 +428,13 @@ const ProductCustomer = () => {
                 <th scope="col">Price</th>
                 <th scope="col">Description</th>
                 <th scope="col">Category</th>
+                <th scope="col">Sub Category</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
+
+              {/* //products will be show in product list after clicked on products */}
               {products.length > 0 ? (
                 products.map((product, index) => (
                   <tr key={index}>
@@ -447,16 +450,15 @@ const ProductCustomer = () => {
                     <td>Rs {product.price}</td>
                     <td>{product.description}</td>
                     <td>{product.category}</td>
-                    <td className="d-flex">
+                    <td>{product.subCategory}</td>
+                    <td className="d-flex" > 
                       <IoAddCircle className="icon-curson me-3 " style={{color:"blue"}}/>
                       <MdDeleteForever
                         className="icon-curson"
                         onClick={() => handleDelete(index)}
                         style={{color:"red"}}
                       />
-                      <button className="ms-auto btn btn-primary rounded-2">
-                        Edit
-                      </button>
+                      <BsThreeDotsVertical className="icon-curson  "/>
                     </td>
                   </tr>
                 ))
@@ -547,12 +549,12 @@ const ProductCustomer = () => {
             <div className="col-2 mt-2">
               <select
                 className="form-control"
-                name="Productcategory"
-                value={formData.Productcategory}
+                name="subCategory"
+                value={formData.subCategory}
                 onChange={handleChange}
                 required
               >
-                <option value="">Product Category</option>
+                <option value="">subCategory</option>
                 <option value="Wayfarer Sunglasses">Wayfarer Sunglasses</option>
                 <option value="Aviator sunglasses">Aviator sunglasses</option>
                 <option value="Sports Sunglasses">Sports Sunglasses</option>
@@ -567,10 +569,12 @@ const ProductCustomer = () => {
           </form>
         </div>
       )}
-
+  {/* add products end here */}
       {showCategory && <Category products={products} />}
     </>
   );
 };
 
 export default ProductCustomer;
+
+// ------------------------------------------------------

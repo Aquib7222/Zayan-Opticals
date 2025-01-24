@@ -4,7 +4,7 @@ import Products from "../component/Products";
 import Slider from "../component/Slider";
 import sunglassesArray from "../component/Sunglasses";
 import "./Shop.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCartPlus, FaHeart, FaEye, FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useCartContext } from "../component/Context/CartContext";
@@ -17,12 +17,24 @@ function Shop() {
   const [currentPage, setCurrentPage] = useState(1); // Current page number
   const productsPerPage = 5; // Number of products per page
   const { addToCart } = useCartContext();
+  // const [selectedCategory,setSelectedCategory]= useState("");
 
+
+  // drop down selection 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
+  // drop down selection end here
+
+
+  // const handleCategory = (event) =>{
+  //   setSelectedCategory(event.target.value);
+
+  // }
   const [selectedColor, setSelectedColor] = useState("red"); // Default selected color
   const colors = ["red", "blue", "green", "yellow", "purple"]; // Available colors
+
 
   //for quantity increment decrement
   const [amount, setAmount] = useState({});
@@ -39,11 +51,15 @@ function Shop() {
     }));
   };
 
+  //quantity increment decrement ends here
+
+
   //toggle mode
   const toggleView = (mode) => {
     setViewMode(mode); // Toggle between grid and list views
   };
 
+  //sort product according to their prices
   const sortOptions = {
     option1: (a, b) => a.name.localeCompare(b.name),
     option2: (a, b) => b.id - a.id,
@@ -55,6 +71,9 @@ function Shop() {
       parseFloat(a.price.replace("$", "")),
   };
 
+  //ends sorting here
+
+
   //range selected
   const [rangeSelected, setrangeSelected] = useState("");
 
@@ -62,36 +81,27 @@ function Shop() {
     const selectedValue = event.target.value;
     console.log(selectedValue);
     setrangeSelected(selectedValue);
-
-    // switch (selectedValue) {
-    //   case "option1":
-    //     return sunglassesArray.filter(
-    //       (sunglasses) =>
-    //         sunglassesArray.price >= 0 && sunglassesArray.price <= 100
-    //     );
-
-    //   case "option2":
-    //     console.log("filter 100 to 200");
-    //     break;
-    //   case "option3":
-    //     console.log("filter 200 to 300");
-    //     break;
-    //   default:
-    //     console.log("Default range selected");
-    // }
   };
 
-  const sortSunglasses = (sunglassesArray, option) =>
-    sunglassesArray.sort(sortOptions[option] || (() => 0));
+  //retrieve products from localstorage
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const storedProducts = localStorage.getItem("products");
+    if (storedProducts) {
+      setProducts(JSON.parse(storedProducts));
+    }
+  }, []);
+
+
+  
+  const sortSunglasses = (products, option) =>
+    products.sort(sortOptions[option] || (() => 0));
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
   const renderSunglasses = () => {
-    const sortedSunglasses = sortSunglasses(
-      [...sunglassesArray],
-      selectedOption
-    );
+    const sortedSunglasses = sortSunglasses([...products], selectedOption);
 
     const displayedSunglasses =
       viewMode === "list"
@@ -106,12 +116,12 @@ function Shop() {
         <div className="product-container">
           <img
             src={sunglasses.image}
-            alt={sunglasses.name}
+            alt={sunglasses.productName}
             className="sunglasses-image"
           />
           {viewMode !== "list" && (
             <>
-              <h5 className="text-uppercase">{sunglasses.name}</h5>
+              <h5 className="text-uppercase">{sunglasses.productName}</h5>
               <p className="ms-2">Price: {sunglasses.price}</p>
             </>
           )}
@@ -191,6 +201,10 @@ function Shop() {
       <Header />
       <Slider />
       <Products />
+
+      {/* filtering here  */}
+
+
       <div className="container-fluid ">
         <div className="row">
           <div className="col-md-3 ">
@@ -203,7 +217,7 @@ function Shop() {
               className="card d-flex flex-column align-items-start"
               style={{ width: "auto", height: "40rem" }}
             >
-              <div className="card-body">
+              <div className="p-3">
                 <input
                   type="text"
                   placeholder="Search item"
@@ -213,9 +227,13 @@ function Shop() {
                 <h6 className="mt-4 text-start">Category</h6>
                 <select className="form-select w-100">
                   <option value="all">All</option>
-                  <option value="men">Men</option>
-                  <option value="women">Women</option>
-                  <option value="unisex">Unisex</option>
+                  <option value="Mens">
+                    Mens
+                  </option>
+                  <option value="Womens">
+                    Womens
+                  </option>
+                  <option value="Unisex">Unisex</option>
                 </select>
 
                 <h6 className="mt-4 text-start">Price Range</h6>
@@ -240,6 +258,7 @@ function Shop() {
                 </div>
 
                 <h6 className="mt-4 text-start">Brand</h6>
+
                 <div className="">
                   <input type="checkbox" id="rayban" />
                   <label htmlFor="rayban" className="ms-2">
@@ -288,6 +307,8 @@ function Shop() {
               </div>
             </div>
           </div>
+{/* //end fitering here */}
+
 
           <div className="col-md-9">
             <div className="Bar_and_Dropdown">
@@ -328,18 +349,32 @@ function Shop() {
       >
         <div
           class="modal-dialog modal-dialog-centered"
-          style={{ width: "350px", height: "350px",display:"flex",justifyContent:"center",alignItems:"center", padding:"20px"}}
+          style={{
+            width: "350px",
+            height: "350px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "20px",
+          }}
         >
           <div class="modal-content d-flex justify-content-center">
-          <button style={{borderRadius:"100%",width:"70px",height:"70px", backgroundColor:"red" ,padding:"10px",margin:"10px" }}>
-            <TiTick style={{height:"100%",width:"100%"}}/>
-          </button>
+            <button
+              style={{
+                borderRadius: "100%",
+                width: "70px",
+                height: "70px",
+                backgroundColor: "red",
+                padding: "10px",
+                margin: "10px",
+              }}
+            >
+              <TiTick style={{ height: "100%", width: "100%" }} />
+            </button>
             <div class="modal-header ">
-            
               <h6 class="modal-title ms-4" id="exampleModalLabel">
                 ITEM ADDED TO YOUR CART
               </h6>
-              
             </div>
             <div class="modal-body text-center">2 ITEMS IN THE CART</div>
             <div class="modal-footer d-flex justify-content-center">
@@ -352,28 +387,28 @@ function Shop() {
                   color: "white",
                   borderRadius: "0px",
                   padding: "10px",
-                  fontWeight:"600"
+                  fontWeight: "600",
                 }}
               >
                 Continue Shopping
               </button>
-              
-              <a href={"/cart"}> <button
-                type="button"
-                class="btn"
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  borderRadius: "0px",
-                  padding: "10px",
-                  fontWeight:"600"
-                }}
-              >
-                Go To Cart
-              </button></a>
-             
-             
-              
+
+              <a href={"/cart"}>
+                {" "}
+                <button
+                  type="button"
+                  class="btn"
+                  style={{
+                    backgroundColor: "black",
+                    color: "white",
+                    borderRadius: "0px",
+                    padding: "10px",
+                    fontWeight: "600",
+                  }}
+                >
+                  Go To Cart
+                </button>
+              </a>
             </div>
           </div>
         </div>

@@ -311,13 +311,14 @@ const Cart = () => {
                     <td>
                       <img src={product.image} style={{ height: "30px", width: "100px" }} alt={product.name} />
                     </td>
-                    <td>{product.name}</td>
+                    <td>{product.productName}</td>
                     <td>Rs {product.price}</td>
                     <td>
                       <CartAmountToggle
                         amount={product.quantity}
                         setDecrease={() => handleDecrement(product.id, product.quantity)}
                         setIncrease={() => handleIncrement(product.id, product.quantity)}
+                      
                       />
                     </td>
                     <td>Rs {product.quantity * product.price}</td>

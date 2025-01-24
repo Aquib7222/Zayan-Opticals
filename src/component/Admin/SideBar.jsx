@@ -6,8 +6,8 @@ const Sidebar = ({ close }) => {
   // const [close, setClose] = useState(false);
 
   return (
-    <div className={`sidebar ${close ? "close" : ""}`}>
-      <div className="sidebar-header">
+    <div className={`sidebar ${close ? "close" : ""}`} >
+      <div className="sidebar-header ">
         <h4>Zayan Opticals</h4>
       </div>
       {!close && (

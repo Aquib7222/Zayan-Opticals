@@ -8,7 +8,7 @@ body{
 .layout {
     display: flex;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: rgb(235, 238, 240);
   }
   
   .sidebar {

@@ -78,7 +78,7 @@ const Product_view = () => {
           className="right d-flex flex-column mt-0 justify-content-start align-items-start"
           style={{ width: "50%", height: "450px" }}
         >
-          <h3 className="text-uppercase">{sunglasses.name}</h3>
+          <h3 className="text-uppercase">{sunglasses.productName}</h3>
           <div className="d-flex align-items-center mb-2">
             <IoIosStar color="gold" size={20} />
             <IoIosStar color="gold" size={20} />
@@ -88,7 +88,7 @@ const Product_view = () => {
           </div>
 
           <h4>Price: RS {sunglasses.price}</h4>
-          <p>{sunglasses.details}</p>
+          <p>{sunglasses.description}</p>
 
           <p>Color:</p>
           <div className="d-flex mb-1">

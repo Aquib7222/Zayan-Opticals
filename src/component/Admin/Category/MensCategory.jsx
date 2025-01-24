@@ -39,6 +39,7 @@ export const MensCategory = ({ products }) => {
                   <th scope="col">Price</th>
                   <th scope="col">Description</th>
                   <th scope="col">Category</th>
+                  <th scope="col">Sub Category</th>
                  
                 </tr>
               </thead>
@@ -58,6 +59,7 @@ export const MensCategory = ({ products }) => {
                       <td>Rs {product.price}</td>
                       <td>{product.description}</td>
                       <td>{product.category}</td>
+                      <td>{product.subCategory}</td>
                      
                     </tr>
                   ))
