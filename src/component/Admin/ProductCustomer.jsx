@@ -270,7 +270,7 @@
 // ------------------------------------------------------------------------------
 import React, { useState, useEffect } from "react";
 import "./ProductCustomer.css";
-import { IoAddCircle } from "react-icons/io5";
+
 import { MdDeleteForever } from "react-icons/md";
 import { Category } from "./Category";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -325,6 +325,7 @@ const ProductCustomer = () => {
     }
 
     const newProduct = {
+      id: Date.now(),
       productName: formData.productName,
       price: formData.price,
       description: formData.description,
@@ -369,6 +370,7 @@ const ProductCustomer = () => {
     setShowCategory(false);
   };
 
+  
   return (
     <>
       {/* Dashboard Cards */}
@@ -452,7 +454,7 @@ const ProductCustomer = () => {
                     <td>{product.category}</td>
                     <td>{product.subCategory}</td>
                     <td className="d-flex" > 
-                      <IoAddCircle className="icon-curson me-3 " style={{color:"blue"}}/>
+                      
                       <MdDeleteForever
                         className="icon-curson"
                         onClick={() => handleDelete(index)}

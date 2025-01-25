@@ -11,7 +11,7 @@ function Header({ loggedIn, userName, onLogout }) {
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
           <Link className="navbar-brand ms-5" to={"/"}>
-            ZAYAN OPTICALS <GiSunglasses style={{ height: "30px" }} />
+            ZAYAN OPTICALS <GiSunglasses style={{ height: "20px" }} />
           </Link>
           <button
             className="navbar-toggler"
@@ -56,6 +56,7 @@ function Header({ loggedIn, userName, onLogout }) {
                 <Link className="nav-link" to={"/Login"}>
                   <button className="login-button px-2 bg-danger text-white">LOGIN</button>
                 </Link>
+                {/* <button onClick={onLogout} className="logout-btn">Logout</button> */}
                </li>
 
               <li>
@@ -64,7 +65,7 @@ function Header({ loggedIn, userName, onLogout }) {
                   
                   <FaCartPlus
                     className="cart_icon"
-                    style={{ height: "30px", width: "20px" }}
+                    style={{ height: "15px", width: "20px" }}
                   />
                   <span style={{ marginTop: "-10px", top: "0px" }}>10</span>
                 </Link>

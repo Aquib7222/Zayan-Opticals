@@ -111,8 +111,10 @@ function Shop() {
     return displayedSunglasses.map((sunglasses) => (
       <div
         key={sunglasses.id}
+       
         className={`sunglasses-item ${viewMode === "list" ? "list-view" : ""}`}
       >
+         {console.log(sunglasses.id)}
         <div className="product-container">
           <img
             src={sunglasses.image}
@@ -161,12 +163,13 @@ function Shop() {
               className="ms-3 bg-danger pb-2  "
               style={{ width: "100px" }}
               onClick={() => {
-                addToCart(sunglasses.id, sunglasses);
+                addToCart(sunglasses.id, sunglasses, amount[sunglasses.id] || 1);
               }}
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
               <FaCartPlus style={{ color: "white" }} />
+              {console.log(sunglasses.id)};
             </button>
           </div>
         </div>

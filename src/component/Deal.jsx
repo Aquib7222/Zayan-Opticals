@@ -59,11 +59,11 @@ function Deal() {
 
   return (
     <>
-      <div class="container1">
-        <div class="column">
-          <div class="heading">TOP TRENDING</div>
+      <div className="container1">
+        <div className="column">
+          <div className="heading">TOP TRENDING</div>
           {productObject[selectedCategory].map((product, index) => (
-            <div class="row" key={index}>
+            <div className="row" key={index}>
               <div className="col-3 ">
                 <img src={product.image} />
               </div>
@@ -80,10 +80,10 @@ function Deal() {
           ))}
         </div>
 
-        <div class="column deal_day">
-          <div class="heading">DEAL OF THE DAY</div>
+        <div className="column deal_day">
+          <div className="heading">DEAL OF THE DAY</div>
           {productObject[selectedCategory2].map((product, index) => (
-            <div class="row1" key={index}>
+            <div className="row1" key={index}>
               
                 <img src={product.image} />
               
@@ -99,10 +99,10 @@ function Deal() {
           ))}
         </div>
 
-        <div class="column">
-        <div class="heading">NEW COLLECTION</div>
+        <div className="column">
+        <div className="heading">NEW COLLECTION</div>
           {productObject[selectedCategory1].map((product, index) => (
-            <div class="row" key={index}>
+            <div className="row" key={index}>
               <div className="col-3 ">
                 <img src={product.image} />
               </div>

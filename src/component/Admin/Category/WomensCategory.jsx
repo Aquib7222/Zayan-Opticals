@@ -41,7 +41,7 @@ const [showWomensProduct, setShowWomensProduct] = useState(true);
                   <th scope="col">Price</th>
                   <th scope="col">Description</th>
                   <th scope="col">Category</th>
-                 
+                  <th scope="col">Sub Category</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,7 +60,7 @@ const [showWomensProduct, setShowWomensProduct] = useState(true);
                       <td>Rs {product.price}</td>
                       <td>{product.description}</td>
                       <td>{product.category}</td>
-                     
+                      <td>{product.subCategory}</td>
                     </tr>
                   ))
                 ) : (

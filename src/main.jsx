@@ -38,17 +38,11 @@ const router = createBrowserRouter([
   { path: "/Modal", element: <Modal /> },
 ]);
 createRoot(document.getElementById("root")).render(
-  <Auth0Provider
-    domain="dev-7ve5xkqhcrpob75x.us.auth0.com"
-    clientId="DPYAASNd5ei8ii8DeFOkCR3HBuPhD5Hb"
-    authorizationParams={{
-      redirect_uri: window.location.origin,
-    }}
-  >
+  
     <ProductProvider>
     <CartProvider>
       <RouterProvider router={router} />
     </CartProvider>
     </ProductProvider>
-  </Auth0Provider>
+ 
 );
