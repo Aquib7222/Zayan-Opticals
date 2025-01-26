@@ -35,7 +35,7 @@
 .banner1 .content {
     position: absolute;
     top: 30%;
-    left: 30%;
+    left: 60%;
     transform: translate(-50%, -50%); /* Center content */
     color: white;
     z-index: 2; /* Ensures content is above the background */
@@ -85,16 +85,16 @@
 .banner2 .content {
     position: absolute;
     top: 30%;
-    left: 30%;
+    left: 60%;
     transform: translate(-50%, -50%); /* Center content */
     color: white;
     z-index: 2; /* Ensures content is above the background */
     opacity: 1;
     transition: opacity 0.3s ease;
 }
-h5{
+/* h5{
     font-weight: 500;
 }
 h2{
     font-weight: 700;
-}
+} */

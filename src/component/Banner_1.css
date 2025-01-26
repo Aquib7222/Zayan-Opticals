@@ -35,7 +35,7 @@
 .banner3 .content {
     position: absolute;
     top: 30%;
-    left: 30%;
+    left: 60%;
     transform: translate(-50%, -50%); /* Center content */
     color: white;
     z-index: 2; /* Ensures content is above the background */
@@ -85,7 +85,7 @@
 .banner4 .content {
     position: absolute;
     top: 30%;
-    left: 30%;
+    left: 60%;
     transform: translate(-50%, -50%); /* Center content */
     color: white;
     z-index: 2; /* Ensures content is above the background */

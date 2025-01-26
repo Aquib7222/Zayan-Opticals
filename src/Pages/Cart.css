@@ -31,3 +31,9 @@ input{
 .clear_cart{
     height: 40px;
 }
+.buttons_In_cart{
+    background-color: brown;
+}
+.continue_shopping:hover{
+    background-color: blueviolet;
+}

@@ -1,53 +1,19 @@
 import "./footer.css";
-import { PiTruck, PiPhoneCall } from "react-icons/pi";
-import { GiAnticlockwiseRotation } from "react-icons/gi";
-import { SiAdguard } from "react-icons/si";
-
+import { FaFacebook } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa";
+import { FaPinterest } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
 function Footer() {
   return (
     <>
-      <div
-        className="flex_container"
-        style={{ marginLeft: "25px", position: "relative", zIndex: 2 }}
-      >
-        <div
-          className="row"
-          style={{
-            border: "1px solid black",
-            marginTop: "20px",
-            position: "relative",
-            zIndex: 2,
-            background: "white",
-            top: "100px",
-          }}
-        >
-          <div className="col-md-3">
-            <PiTruck size={80} />
-            <h5>FREE SHIPPING</h5>
-          </div>
-          <div className="col-md-3">
-            <GiAnticlockwiseRotation size={80} />
-            <h5>30 DAYS RETURN POLICY</h5>
-          </div>
-          <div className="col-md-3">
-            <PiPhoneCall size={80} />
-            <h5>24/7 CUSTOMER SUPPORT</h5>
-          </div>
-          <div className="col-md-3">
-            <SiAdguard size={80} />
-            <h5>COMMITMENT TO QUALITY</h5>
-          </div>
-        </div>
-      </div>
-
       <footer
         className="py-5 footer"
         style={{ position: "relative", top: "50px", zIndex: 1 }}
       >
         <div className="row container-fluid">
           <div className="col-12 col-md-4 mb-3 px-5">
-            <h5>Contact Us</h5>
-            <ul className="nav flex-column">
+            <h3>Contact Us</h3>
+            <ul className="nav flex-column flex-star">
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0 text-body-primary">
                   Rohini, Sector 1, New Delhi, India
@@ -67,55 +33,95 @@ function Footer() {
           </div>
 
           <div className="col-12 col-md-4 mb-3 px-5">
-            <h5>Product</h5>
+            <h3>Company</h3>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0 ">
-                  Orders
+                  About Us
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0 text-body-danger">
-                  Download
+                  Privacy Policy
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0 text-body-primary">
-                  Address
+                  Terms & Condition
                 </a>
               </li>
               <li className="nav-item mb-2">
                 <a href="#" className="nav-link p-0 text-body-primary">
-                  Account Details
+                  Contact Us
+                </a>
+              </li>
+              <li className="nav-item mb-2">
+                <a href="#" className="nav-link p-0 text-body-primary">
+                  Support Center
+                </a>
+              </li>
+              <li className="nav-item mb-2">
+                <a href="#" className="nav-link p-0 text-body-primary">
+                  Careers
                 </a>
               </li>
             </ul>
           </div>
 
           <div className="col-12 col-md-4 mb-3">
-            <form>
-              <h5>Subscribe to our newsletter</h5>
-              <p>Monthly digest of what's new and exciting from us.</p>
-              <div className="d-flex flex-column flex-sm-row w-100 gap-2">
-                <label htmlFor="newsletter1" className="visually-hidden">
-                  Email address
-                </label>
-                <input
-                  id="newsletter1"
-                  type="text"
-                  className="form-control"
-                  placeholder="Email address"
-                />
-                <button className="btn btn-primary" type="button">
-                  Subscribe
-                </button>
-              </div>
-            </form>
+            <h3>Account</h3>
+
+            <ul className="nav flex-column">
+              <li className="nav-item mb-2">
+                <a href="#" className="nav-link p-0 ">
+                  Sign In
+                </a>
+              </li>
+              <li className="nav-item mb-2">
+                <a href="#" className="nav-link p-0 ">
+                  Register
+                </a>
+              </li>
+              <li className="nav-item mb-2">
+                <a href="#" className="nav-link p-0 ">
+                  View Cart
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center ">
-          <p>© 2024 Company, Inc. All rights reserved.</p>
+        <hr />
+        <div class="container mt-0">
+          <div class="row align-items-center">
+            <div class="col-12 ">
+              <div class="footer-bottom"></div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <p class="font-sm mb-0">
+                © 2024, <strong class="text-brand "style={{color:"red"}}>- Zayan Opticals</strong> <br />
+                All rights reserved
+              </p>
+            </div>
+            <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
+              <div class="hotline d-lg-inline-flex mr-30">
+                <p>
+                <strong class="text-brand "style={{color:"red",fontSize:"30px"}}>1900 -6666</strong><br />
+
+                  Working 8:00 - 22:00
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
+              <div class="mobile-social-icon  ">
+                <h6>Follow Us</h6>
+                <a href="" className="facebook"><FaFacebook /></a>
+                <a href="" className="insta"><RiInstagramFill /></a>
+                <a href="" className="twitter"><FaTwitter /></a>
+                <a href="" className="pinterest"><FaPinterest /></a>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
     </>

@@ -1,33 +1,92 @@
 import "./Shipping.css";
-import { PiTruck, PiPhoneCall } from "react-icons/pi";
+
 import { GiAnticlockwiseRotation } from "react-icons/gi";
 import { SiAdguard } from "react-icons/si";
-
+import { FaHandshake } from "react-icons/fa6";
+import { HiCurrencyRupee } from "react-icons/hi2";
 function Shipping() {
   return (
     <>
-      <div className="flex_container" style={{ marginLeft: "25px" }}>
-        <div
-          className="row"
-          style={{ border: "1px solid black", marginTop: "20px" }}
-        >
-          <div className="col-md-3">
+      <div className="flex_container d-flex justify-content-between shipping" style={{ marginLeft: "40px" }}>
+        <div className="row" style={{ marginTop: "20px" }}>
+          <div
+            className="col-md-2"
+            style={{
+              backgroundColor: "#f7f9fc",
+              borderRadius: "15px",
+              padding: "0px",
+              marginRight: "20px",
+            }}
+          >
             {" "}
-            <PiTruck size={80} />
-            <h5>FREE SHIPPING</h5>
+            <div className="row">
+              <div className="col-md-6">
+                <FaHandshake size={80} />
+              </div>
+              <div className="col-md-6">
+                <h5>FREE Delivery</h5>
+                <p style={{ lineHeight: "1" }}>24/7 amazing services</p>
+              </div>
+            </div>
           </div>
-          <div className="col-md-3">
-            <GiAnticlockwiseRotation size={80} />
-            <h5>30 DAYS RETURN POLICY</h5>
+
+
+           {/* easy return  */}
+          <div
+            className="col-md-2"
+            style={{
+              backgroundColor: "#f7f9fc",
+              borderRadius: "15px",
+              padding: "0px",
+              marginLeft:"20px"
+            }}
+          >
+            <div className="row">
+              <div className="col-md-6">
+                <GiAnticlockwiseRotation size={80} />
+              </div>
+              <div className="col-md-6">
+                <h5>Easy Returns</h5>
+                <p style={{ lineHeight: "1" }}>Within 30 Days</p>
+              </div>
+            </div>
           </div>
-          <div className="col-md-3">
-            {" "}
-            <PiPhoneCall size={80} />
-            <h5>24/7 CUSTOMER SUPPORT</h5>
+
+            {/* Best Prices and Servicess */}
+          <div className="col-md-3"style={{
+              backgroundColor: "#f7f9fc",
+              borderRadius: "15px",
+              padding: "0px",
+              marginLeft:"20px"
+            }}>
+            <div className="row">
+              <div className="col-md-6">
+                <HiCurrencyRupee size={80} />
+              </div>
+              <div className="col-md-6">
+                <h5>Best Prices & Services</h5>
+                <p style={{ lineHeight: "1" }}>Orders ₹1000 or more</p>
+              </div>
+            </div>
+           
           </div>
-          <div className="col-md-3">
-            <SiAdguard size={80} />
-            <h5>COMMITEMENT TO QUALITY</h5>
+          <div className="col-md-3"
+          style={{
+            backgroundColor: "#f7f9fc",
+            borderRadius: "15px",
+            padding: "0px",
+            marginLeft:"20px"
+          }}>
+            <div className="row">
+              <div className="col-md-6">
+                <SiAdguard size={80} />
+              </div>
+              <div className="col-md-6">
+                <h5>COMMITEMENT TO QUALITY</h5>
+                
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

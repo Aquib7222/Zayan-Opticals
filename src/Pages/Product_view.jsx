@@ -3,6 +3,9 @@ import { IoIosStar } from "react-icons/io";
 import {  useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useCartContext } from "../component/Context/CartContext";
+import MainHeader from "../component/MainHeader";
+import Shipping from "../component/Shipping";
+import Footer from "../component/footer";
 // import { useProductContext } from "../component/Context/ProductContext";
 // import { useProductContext } from "../component/Context/ProductContext";
 
@@ -35,6 +38,7 @@ const Product_view = () => {
 
   return (
     <>
+    <MainHeader/>
       <Header />
      
       <nav
@@ -155,6 +159,8 @@ const Product_view = () => {
           </button>
         </div>
       </div>
+      <Shipping/>
+      <Footer/>
     </>
   );
 };

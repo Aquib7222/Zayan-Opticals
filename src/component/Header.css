@@ -27,3 +27,20 @@ span{
     padding-left: -10px;
     
 }
+
+/* Remove bottom padding from navbar */
+.navbar {
+    padding-bottom: 0;
+  }
+  
+  /* Ensure the contact info is on the far right */
+  .navbar-nav {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .navbar-nav .nav-item.ms-auto {
+    margin-left: auto; /* Pushes the last item to the right */
+  }
+  

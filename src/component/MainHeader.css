@@ -1,0 +1,30 @@
+/* Add positioning for dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style-type: none;
+    top: 100%; /* Position it directly below the Account link */
+    left: -80px;
+    display: block;
+    z-index: 10; /* Ensure it's on top of other elements */
+    width: 80px;
+  }
+  
+  /* Style for cursor pointer */
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  /* Optionally style the links inside the dropdown */
+  .dropdown-menu p {
+    margin: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu p:hover {
+    background-color: #f0f0f0;
+  }
+  

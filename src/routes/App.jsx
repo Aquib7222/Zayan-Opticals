@@ -13,6 +13,8 @@ import React, { useEffect } from 'react';
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Banner_1 from "../component/Banner_1";
 import Brands from "../component/Brands";
+import MainHeader from "../component/MainHeader";
+import Shipping from "../component/Shipping";
 
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
   return (
     <>
       
+        <MainHeader/>
         <Header />
         <Outlet />
         <Slider />
@@ -29,7 +32,7 @@ function App() {
         <Deal />
         <Banner_1/>
         <Brands/>
-        
+        <Shipping/>
         <Footer />
       
     </>

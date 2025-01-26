@@ -11,6 +11,7 @@ import { useCartContext } from "../component/Context/CartContext";
 import { IoGridSharp } from "react-icons/io5";
 import CartAmountToggle from "../component/CartAmountToggle";
 import { TiTick } from "react-icons/ti";
+import MainHeader from "../component/MainHeader";
 function Shop() {
   const [selectedOption, setSelectedOption] = useState("");
   const [viewMode, setViewMode] = useState("grid"); // State for grid/list view
@@ -125,6 +126,7 @@ function Shop() {
             <>
               <h5 className="text-uppercase">{sunglasses.productName}</h5>
               <p className="ms-2">Price: {sunglasses.price}</p>
+              <p>{sunglasses.details}</p>
             </>
           )}
         </div>
@@ -134,7 +136,7 @@ function Shop() {
             <>
               <h5 className="text-uppercase">{sunglasses.name}</h5>
               <p className="">Price: {sunglasses.price}</p>
-              <p>{sunglasses.details}</p>
+              <p>{sunglasses.description}</p>
             </>
           )}
 
@@ -201,6 +203,7 @@ function Shop() {
 
   return (
     <>
+    <MainHeader/>
       <Header />
       <Slider />
       <Products />

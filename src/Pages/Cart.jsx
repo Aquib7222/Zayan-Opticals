@@ -164,14 +164,14 @@
 //                     <td>{product.name}</td>
 //                     <td>Rs {product.price}</td>
 //                     <td>
-                      
+
 //                       <CartAmountToggle
 //                         amount={quantities[product.id]} // Use the correct quantity from the state
-                       
+
 //                         setDecrease={() => setDecrease(product.id)} // Pass function to decrease
 //                         setIncrease={() => setIncrease(product.id)} // Pass function to increase
 //                       />
-                      
+
 //                     </td>
 //                     <td>Rs {quantities[product.id] * product.price}
 
@@ -224,7 +224,6 @@
 //           </div>
 //           </div>
 
-         
 //         </div>
 //       </div>
 //     </>
@@ -241,9 +240,18 @@ import { MdDeleteForever } from "react-icons/md";
 import { useCartContext } from "../component/Context/CartContext";
 import { NavLink } from "react-router-dom";
 import CartAmountToggle from "../component/CartAmountToggle";
-
+import MainHeader from "../component/MainHeader";
+import Shipping from "../component/Shipping";
+import Footer from "../component/footer";
 const Cart = () => {
-  const { cart, total_amount, shipping_fee, removeFromCart, removeAllFromCart, updateCartQuantity } = useCartContext();
+  const {
+    cart,
+    total_amount,
+    shipping_fee,
+    removeFromCart,
+    removeAllFromCart,
+    updateCartQuantity,
+  } = useCartContext();
 
   const handleIncrement = (id, quantity) => {
     updateCartQuantity(id, quantity + 1);
@@ -257,7 +265,11 @@ const Cart = () => {
     return (
       <>
         <Header />
-        <img src={BannerImage} alt="" style={{ height: "65vh", width: "100%" }} />
+        <img
+          src={BannerImage}
+          alt=""
+          style={{ height: "65vh", width: "100%" }}
+        />
         <h3 className="text-center mt-5">CART</h3>
         <div className="container mt-5 mb-5">
           <div className="row cart_details h-auto">
@@ -265,7 +277,9 @@ const Cart = () => {
               <h4>Cart is empty</h4>
             </div>
             <NavLink to={"/Shop"}>
-              <button className="continue_shopping bg-primary p-2 text-white">Continue Shopping</button>
+              <button className="continue_shopping bg-primary p-2 text-white">
+                Continue Shopping
+              </button>
             </NavLink>
           </div>
         </div>
@@ -275,20 +289,35 @@ const Cart = () => {
 
   return (
     <>
+      <MainHeader />
       <Header />
-      <img src={BannerImage} alt="" style={{ height: "65vh", width: "100%" }} />
-      <nav style={{ marginTop: "20px" }} aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <NavLink to="/Shop" style={{ textDecoration: "none", color: "black", marginLeft: "10px" }}>
+      {/* <img src={BannerImage} alt="" style={{ height: "65vh", width: "100%" }} /> */}
+
+      <nav
+        style={{
+          "--bs-breadcrumb-divider":
+            "url('data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'8\\' height=\\'8\\'%3E%3Cpath d=\\'M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z\\' fill=\\'%236c757d\\'/%3E%3C/svg%3E')",
+        }}
+        aria-label="breadcrumb"
+      >
+        {/* Breadcrumb content */}
+
+        <ol className="breadcrumb mt-3">
+          <li className="breadcrumb-item ms-3">
+
+
+            
+            <a href="#" className="text-decoration-none text-black">
               Shop
-            </NavLink>
+            </a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            <span style={{ fontWeight: "bold" }}>Cart</span>
+            Cart
           </li>
         </ol>
       </nav>
+      {/* //breadcrumb end here */}
+
 
       <h3 className="text-center mt-3">CART</h3>
 
@@ -309,21 +338,31 @@ const Cart = () => {
                 {cart.map((product) => (
                   <tr key={product.id}>
                     <td>
-                      <img src={product.image} style={{ height: "30px", width: "100px" }} alt={product.name} />
+                      <img
+                        src={product.image}
+                        style={{ height: "30px", width: "100px" }}
+                        alt={product.name}
+                      />
                     </td>
                     <td>{product.productName}</td>
                     <td>Rs {product.price}</td>
                     <td>
                       <CartAmountToggle
                         amount={product.quantity}
-                        setDecrease={() => handleDecrement(product.id, product.quantity)}
-                        setIncrease={() => handleIncrement(product.id, product.quantity)}
-                      
+                        setDecrease={() =>
+                          handleDecrement(product.id, product.quantity)
+                        }
+                        setIncrease={() =>
+                          handleIncrement(product.id, product.quantity)
+                        }
                       />
                     </td>
                     <td>Rs {product.quantity * product.price}</td>
                     <td>
-                      <MdDeleteForever onClick={() => removeFromCart(product.id)} className="delete_Button text-danger" />
+                      <MdDeleteForever
+                        onClick={() => removeFromCart(product.id)}
+                        className="delete_Button text-danger"
+                      />
                     </td>
                   </tr>
                 ))}
@@ -331,13 +370,18 @@ const Cart = () => {
             </table>
 
             <NavLink to={"/Shop"}>
-              <button className="continue_shopping bg-primary p-2 text-white">Continue Shopping</button>
+              <button className="continue_shopping  p-2 text-white buttons_In_cart">
+                Continue Shopping
+              </button>
             </NavLink>
 
-            <button className="clear_cart ms-auto bg-danger text-white" onClick={removeAllFromCart}>
-              Clear Cart
+            <button
+              className="clear_cart ms-auto  text-white buttons_In_cart"
+              onClick={removeAllFromCart}
+            >
+              <MdDeleteForever/> Clear Cart
             </button>
-            <div className="border ms-3 pt-2 cart_details w-25 mb-3">
+            <div className="border ms-3 pt-2 cart_details w-25 mb-3 ">
               <h6>CART DETAILS</h6>
               <table className="table">
                 <tbody>
@@ -355,11 +399,15 @@ const Cart = () => {
                   </tr>
                 </tbody>
               </table>
-              <button className="payment_button mt-2 w-75">Proceed To Payment</button>
+              <button className="payment_button mt-2 w-75 buttons_In_cart">
+                Proceed To Payment
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <Shipping/>
+      <Footer/>
     </>
   );
 };

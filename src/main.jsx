@@ -26,10 +26,8 @@ const router = createBrowserRouter([
   { path: "/Blog", element: <Blog /> },
   { path: "/About", element: <About /> },
   { path: "/Contact_Us", element: <Contact_Us /> },
-
   { path: "/Cart", element: <Cart /> },
-  // Add the product detail route here
-  { path: "/product/:id", element: <ProductDetail /> }, // Dynamic route for product details
+  { path: "/product/:id", element: <ProductDetail /> }, 
   { path: "/Product_view", element: <Product_view /> },
   { path: "/Login", element: <Login /> },
   { path: "/Signup", element: <Signup /> },

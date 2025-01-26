@@ -3,6 +3,7 @@ import Header from "../component/Header";
 import BannerImage from "../Images/Banner_image.jpg";
 import "./About.css";
 import about2 from "../Images/about2.jpg";
+import MainHeader from "../component/MainHeader";
 
 function About() {
   const divStyle1 = {
@@ -16,6 +17,7 @@ function About() {
 
   return (
     <>
+    <MainHeader/>
       <Header />
 
       {/* for Home > About breadcrumb */}

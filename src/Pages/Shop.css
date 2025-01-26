@@ -46,6 +46,7 @@
     justify-content: space-around;
     gap: 0px;
     padding: 0px 20px 20px 20px;
+    border-radius: 15px;
   }
   
   /* Each sunglasses item */
@@ -59,6 +60,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     cursor: pointer;
+    border-radius: 20px;
   }
   
   /* Sunglasses item image */

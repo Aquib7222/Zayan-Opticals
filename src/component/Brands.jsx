@@ -25,13 +25,10 @@ function Brands() {
   ];
   return (
     <>
-      <h2>FAMOUS BRANDS</h2>
-      <p>
-        Sed ut perspiciatis omnis natus voluptem accusantium doremque
-        laudantium.
-      </p>
+      <h2 className="text-center">FAMOUS BRANDS</h2>
+      
 
-      <div className="flex-container">
+      <div className="flex-container d-flex justify-content-center">
         {items.map((item) => (
           <div key={item.id} className="flex-item">
             <img

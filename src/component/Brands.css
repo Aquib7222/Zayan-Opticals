@@ -1,8 +1,8 @@
-h2 ,p{
+/* h2 ,p{
     text-align: center;
     font-family:'Times New Roman', Times, serif;
     font-weight: 800;
-}
+} */
 .flex-container{
     display: flex;
     flex-wrap: wrap;
