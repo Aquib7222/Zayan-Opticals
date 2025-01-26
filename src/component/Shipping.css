@@ -1,3 +1,6 @@
 .shipping{
     cursor: pointer;
 }
+.shipping_height{
+    height: 80px;
+}

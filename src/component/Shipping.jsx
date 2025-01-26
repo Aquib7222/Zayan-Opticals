@@ -19,8 +19,8 @@ function Shipping() {
             }}
           >
             {" "}
-            <div className="row">
-              <div className="col-md-6">
+            <div className="row shipping_height">
+              <div className="col-md-6 ">
                 <FaHandshake size={80} />
               </div>
               <div className="col-md-6">
@@ -33,7 +33,7 @@ function Shipping() {
 
            {/* easy return  */}
           <div
-            className="col-md-2"
+            className="col-md-2 "
             style={{
               backgroundColor: "#f7f9fc",
               borderRadius: "15px",
@@ -42,7 +42,7 @@ function Shipping() {
             }}
           >
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6 ">
                 <GiAnticlockwiseRotation size={80} />
               </div>
               <div className="col-md-6">

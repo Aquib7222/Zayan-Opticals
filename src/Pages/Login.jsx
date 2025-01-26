@@ -176,7 +176,17 @@ import Header from "../component/Header";
 import MainHeader from "../component/MainHeader";
 import Shipping from "../component/Shipping";
 import { IoHomeOutline } from "react-icons/io5";
+import "./Login.css";
+import { useState } from "react";
 const Login = () => {
+
+  // State to track the active button
+  const [activeButton, setActiveButton] = useState('dashboard'); // Default active button
+
+  // Handler to change the active button
+  const handleButtonClick = (button) => {
+    setActiveButton(button);
+  };
   return (
     <>
       <MainHeader />
@@ -191,7 +201,7 @@ const Login = () => {
         }}
         aria-label="breadcrumb"
       >
-        {/* Breadcrumb content */}
+        
 
         <ol className="breadcrumb mt-3">
           <li className="breadcrumb-item ms-5">
@@ -205,7 +215,8 @@ const Login = () => {
         </ol>
       </nav>
       <hr />
-      <div>
+      
+      {/* <div>
         <div className="row">
           <div className="col-4">
             <img src="" alt="" />
@@ -254,15 +265,49 @@ const Login = () => {
                 />
               </div>
               <p style={{textAlign:"left"}}><a href="" style={{textDecoration:"none" ,color:"black",opacity:"0.5"}}>Forget password ?</a></p>
-              <button type="submit" class="btn btn-primary me-auto py-2 px-4 " style={{left:"0", display: "block",  
+              <button type="submit" class="btn btn-danger me-auto py-2 px-4 " style={{left:"0", display: "block",  
                   width: "25%" }}>
                 Login
               </button>
             </form>
           </div>
         </div>
+      </div>  */}
+      <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-3 d-flex flex-column">
+          <button 
+            className={`login_dashboard ${activeButton === 'dashboard' ? 'active' : ''}`} 
+            onClick={() => handleButtonClick('dashboard')}
+          >
+            Dashboard
+          </button>
+          <button 
+            className={`login_dashboard ${activeButton === 'orders' ? 'active' : ''}`} 
+            onClick={() => handleButtonClick('orders')}
+          >
+            Orders
+          </button>
+          <button 
+            className={`login_dashboard ${activeButton === 'account' ? 'active' : ''}`} 
+            onClick={() => handleButtonClick('account')}
+          >
+            Account Details
+          </button>
+          <button 
+            className={`login_dashboard ${activeButton === 'logout' ? 'active' : ''}`} 
+            onClick={() => handleButtonClick('logout')}
+          >
+            Logout
+          </button>
+        </div>
+        <div className="col-md-8">
+          <h4 style={{left:"0"}}>Hello Aquib Shahzada</h4>
+          <p>From your account dashboard. you can easily check & view your recent orders,
+          manage your shipping and billing addresses and edit your password and account details.</p>
+        </div>
       </div>
-
+    </div>
       <Shipping />
       <Footer />
     </>

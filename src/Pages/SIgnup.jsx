@@ -56,33 +56,65 @@ const Signup=()=>{
                   </NavLink>
                 </p>
                 <form>
-                  <div class="mb-3 w-75">
-                    
-                    <input
+                  <div className="row">
+                    <div className="col-md-6"> <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="First Name"
+                      style={{padding:"15px",backgroundColor:"#eefeff"}}
+    
+                    /></div>
+                    <div className="col-md-6"> <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Last Name"
+                      style={{padding:"15px",backgroundColor:"#eefeff"}}
+    
+                    /></div>
+                  </div>
+                  <div className="row" style={{left:"0"}}>
+                    <div className="col-md-6"> <input
                       type="email"
                       class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="abc@gmail.com"
+                      id="exampleInputPassword1"
+                      placeholder="Enter Your Email"
                       style={{padding:"15px",backgroundColor:"#eefeff"}}
-                    />
-                    
+    
+                    /></div>
+                    <div className="col-md-6"> <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Enter Your Number"
+                      style={{padding:"15px",backgroundColor:"#eefeff"}}
+    
+                    /></div>
                   </div>
-                  <div class="mb-3 w-75">
-                    
-                    <input
+                
+                  <div className="row">
+                    <div className="col-md-6"> <input
                       type="password"
                       class="form-control"
                       id="exampleInputPassword1"
                       placeholder="Enter Your Password"
                       style={{padding:"15px",backgroundColor:"#eefeff"}}
     
-                    />
+                    /></div>
+                    <div className="col-md-6"> <input
+                      type="password"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Confirm Password"
+                      style={{padding:"15px",backgroundColor:"#eefeff"}}
+    
+                    /></div>
                   </div>
-                  <p style={{textAlign:"left"}}><a href="" style={{textDecoration:"none" ,color:"black",opacity:"0.5"}}>Forget password ?</a></p>
-                  <button type="submit" class="btn btn-primary me-auto py-2 px-4 " style={{left:"0", display: "block",  
-                      width: "25%" }}>
-                    Login
+                  
+                  <button type="submit" class="btn btn-danger me-auto py-3 px-3 ms-2 mt-2 " style={{left:"0", display: "block",  
+                      width: "20%" }}>
+                    Register
                   </button>
                 </form>
               </div>
