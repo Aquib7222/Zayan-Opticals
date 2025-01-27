@@ -6,8 +6,8 @@ import { FaCartPlus } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaHeadphonesAlt } from "react-icons/fa";
 
-function Header({ loggedIn, userName, onLogout }) {
-  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+function Header({ userName ,isLoggedIn,handleLogout}) {
+  // const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
 
   return (
     <div>
@@ -50,12 +50,41 @@ function Header({ loggedIn, userName, onLogout }) {
                 </Link>
               </li>
 
-              <li className="nav-item">
-                <Link to={"/Login"} className="nav-link">Sign In</Link>
-              </li>
-              <li className="nav-item">
-                <Link to={"/Signup"} className="nav-link">Register</Link>
-              </li>
+               {/* Conditionally render Sign In or User Name based on isLoggedIn */}
+               {!isLoggedIn ? (
+                <li className="nav-item">
+                  <Link to={"/Login"} className="nav-link">
+                    Sign In
+                  </Link>
+                </li>
+              ) : (
+
+                <li className="nav-item">
+                  <Link to={"/Login"}>
+                  <span className="nav-link">{userName}</span>                  
+                  </Link>
+                  
+                </li>
+              )}
+
+              {/* Conditionally render Register button if not logged in */}
+              {!isLoggedIn && (
+                <li className="nav-item">
+                  <Link to={"/Signup"} className="nav-link">
+                    Register
+                  </Link>
+                </li>
+              )}
+
+              {/* Logout button */}
+              {isLoggedIn && (
+                <li className="nav-item">
+                  <button onClick={handleLogout} className="nav-link btn btn-link">
+                    Logout
+                  </button>
+                </li>
+              )}
+
 
               {/* Last li with contact info, aligned to the right */}
               <li className="nav-item ms-auto d-flex align-items-center py-0">

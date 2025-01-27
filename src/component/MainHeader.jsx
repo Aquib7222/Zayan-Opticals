@@ -19,9 +19,10 @@ const MainHeader = () => {
           {/* search box */}
           <li>
             <input
+              className="search_box"
               type="text"
               placeholder="Search products"
-              style={{ width: "400px", padding: "10px" }}
+              style={{  padding: "10px" }}
             />
           </li>
 

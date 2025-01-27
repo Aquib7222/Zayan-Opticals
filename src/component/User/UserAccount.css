@@ -1,0 +1,7 @@
+.input-with-opacity::placeholder{
+    opacity: 0.5;
+}
+.asterisk{
+    color: red;
+    
+}

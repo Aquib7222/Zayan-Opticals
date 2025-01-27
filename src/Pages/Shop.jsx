@@ -12,6 +12,7 @@ import { IoGridSharp } from "react-icons/io5";
 import CartAmountToggle from "../component/CartAmountToggle";
 import { TiTick } from "react-icons/ti";
 import MainHeader from "../component/MainHeader";
+import { IoHomeOutline } from "react-icons/io5";
 function Shop() {
   const [selectedOption, setSelectedOption] = useState("");
   const [viewMode, setViewMode] = useState("grid"); // State for grid/list view
@@ -26,13 +27,7 @@ function Shop() {
     setSelectedOption(event.target.value);
   };
 
-  // drop down selection end here
-
-
-  // const handleCategory = (event) =>{
-  //   setSelectedCategory(event.target.value);
-
-  // }
+  
   const [selectedColor, setSelectedColor] = useState("red"); // Default selected color
   const colors = ["red", "blue", "green", "yellow", "purple"]; // Available colors
 
@@ -205,7 +200,26 @@ function Shop() {
     <>
     <MainHeader/>
       <Header />
-      <Slider />
+      <nav
+              style={{
+                "--bs-breadcrumb-divider":
+                  "url('data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'8\\' height=\\'8\\'%3E%3Cpath d=\\'M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z\\' fill=\\'%236c757d\\'/%3E%3C/svg%3E')",
+              }}
+              aria-label="breadcrumb"
+            >
+              <ol className="breadcrumb mt-3">
+                <li className="breadcrumb-item ms-5">
+                  <a href="#" className="text-decoration-none">
+                    <IoHomeOutline className="top-1" /> Home
+                  </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Shop
+                </li>
+              </ol>
+            </nav>
+           
+      {/* <Slider /> */}
       <Products />
 
       {/* filtering here  */}

@@ -17,6 +17,7 @@ import Modal from "./component/Modal.jsx";
 import Admin from "./Pages/Admin.jsx";
 import { Auth0Provider } from '@auth0/auth0-react';
 import ProductProvider from "./component/Context/AdminProductContext.jsx";
+import Checkout from "./Pages/Checkout.jsx";
 // import { ProductProvider } from "./component/Context/ProductContext.jsx";
 
 const router = createBrowserRouter([
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
   { path: "/Login/UserDashboard", element: <UserDashboard /> },
   { path: "/Admin", element: <Admin/>},
   { path: "/Modal", element: <Modal /> },
+  { path: "/checkout", element: <Checkout/>}
 ]);
 createRoot(document.getElementById("root")).render(
   

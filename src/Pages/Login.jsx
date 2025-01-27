@@ -1,174 +1,3 @@
-// import Footer from "../component/footer";
-// import Header from "../component/Header";
-
-// import { useState, useEffect } from "react";
-
-// import "./Login.css";
-// import MainHeader from "../component/MainHeader";
-
-// const Login = () => {
-//   const [isLogin, setIsLogin] = useState(true);
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [name, setName] = useState("");
-//   const [loggedIn, setLoggedIn] = useState(false);
-//   const [userName, setUserName] = useState("");
-//   const [error, setError] = useState("");
-
-//   // Check if user details are in localStorage on initial render
-//   useEffect(() => {
-//     const storedUsers = JSON.parse(localStorage.getItem("users"));
-//     if (storedUsers && storedUsers.length > 0) {
-//       const storedUser = storedUsers.find((user) => user.email === email);
-//       if (storedUser) {
-//         setLoggedIn(true);
-//         setUserName(storedUser.name);
-//       }
-//     }
-//   }, []);
-
-//   // Handle login submission
-//   const handleLoginSubmit = (event) => {
-//     event.preventDefault();
-//     if (email && password) {
-//       const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-//       // Check if the entered email and password match any stored user
-//       const foundUser = storedUsers.find(
-//         (user) => user.email === email && user.password === password
-//       );
-
-//       if (foundUser) {
-//         setLoggedIn(true);
-//         setUserName(foundUser.name);
-//         alert("Logging in...");
-//       } else {
-//         setError("Invalid email or password.");
-//       }
-//     } else {
-//       setError("Please fill in all fields.");
-//     }
-//   };
-
-//   // Handle signup submission
-//   const handleSignupSubmit = (event) => {
-//     event.preventDefault();
-//     if (name && email && password) {
-//       const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-//       // Check if the user already exists
-//       const existingUser = storedUsers.find((user) => user.email === email);
-//       if (existingUser) {
-//         setError("User already exists.");
-//         return;
-//       }
-
-//       const newUser = { name, email, password };
-//       storedUsers.push(newUser); // Add new user to the users array
-//       localStorage.setItem("users", JSON.stringify(storedUsers)); // Save updated users array to localStorage
-//       setLoggedIn(true);
-//       setUserName(name);
-//       alert("Sign up successful!");
-//     } else {
-//       setError("Please fill in all fields.");
-//     }
-//   };
-
-//   // Handle logout and clear user state
-//   const handleLogout = () => {
-//     setLoggedIn(false);
-//     setUserName("");
-//   };
-
-//   return (
-//     <>
-//       <MainHeader />
-//       <Header loggedIn={loggedIn} userName={userName} />
-
-//       {!loggedIn ? (
-//         <div className="container">
-//           <div className="form-container">
-//             <div>
-//               <div className="form-toggle">
-//                 <button
-//                   className={isLogin ? "active" : ""}
-//                   onClick={() => setIsLogin(true)}
-//                 >
-//                   Login
-//                 </button>
-//                 <button
-//                   className={!isLogin ? "active" : ""}
-//                   onClick={() => setIsLogin(false)}
-//                 >
-//                   Signup
-//                 </button>
-//               </div>
-
-//               {isLogin ? (
-//                 <div className="form">
-//                   <h6>Login Form</h6>
-//                   <input
-//                     type="email"
-//                     placeholder="Email"
-//                     value={email}
-//                     onChange={(e) => setEmail(e.target.value)}
-//                   />
-//                   <input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={password}
-//                     onChange={(e) => setPassword(e.target.value)}
-//                   />
-//                   {error && <p className="error">{error}</p>}
-//                   <button onClick={handleLoginSubmit}>Login</button>
-//                   <p>
-//                     Not a Member?{" "}
-//                     <a href="#" onClick={() => setIsLogin(false)}>
-//                       Signup now
-//                     </a>
-//                   </p>
-//                 </div>
-//               ) : (
-//                 <div className="form">
-//                   <h6>Signup Form</h6>
-//                   <input
-//                     type="text"
-//                     placeholder="Full Name"
-//                     value={name}
-//                     onChange={(e) => setName(e.target.value)}
-//                   />
-//                   <input
-//                     type="email"
-//                     placeholder="Email"
-//                     value={email}
-//                     onChange={(e) => setEmail(e.target.value)}
-//                   />
-//                   <input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={password}
-//                     onChange={(e) => setPassword(e.target.value)}
-//                   />
-//                   {error && <p className="error">{error}</p>}
-//                   <button onClick={handleSignupSubmit}>Sign up</button>
-//                 </div>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       ) : (
-//         // User details page
-//         <div className=" user-details">
-//           <div className="item1"></div>
-//           <div className="item2 p-4"></div>
-//         </div>
-//       )}
-//       <Footer/>
-//     </>
-//   );
-// };
-
-// export default Login;
 
 import { NavLink } from "react-router-dom";
 import Footer from "../component/footer";
@@ -177,22 +6,68 @@ import MainHeader from "../component/MainHeader";
 import Shipping from "../component/Shipping";
 import { IoHomeOutline } from "react-icons/io5";
 import "./Login.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import UserDashboard from "../component/User/UserDashboard";
+import { VscSettings } from "react-icons/vsc";
+import { IoBagOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
+import UserAccount from "../component/User/UserAccount"
+import UserOrder from "../component/User/UserOrder"
+
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [activeButton, setActiveButton] = useState('dashboard');
+  
 
-  // State to track the active button
-  const [activeButton, setActiveButton] = useState('dashboard'); // Default active button
+  // Check if the user is already logged in when the page loads or refreshes
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn');
+    const storedUserName = localStorage.getItem('userName');
+    if (loggedIn === 'true' && storedUserName) {
+      setIsLoggedIn(true);
+      setUserName(storedUserName);
+    }
+  }, []);
 
-  // Handler to change the active button
   const handleButtonClick = (button) => {
     setActiveButton(button);
+
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const users = JSON.parse(localStorage.getItem("users"));
+    const UserLogin = users.find((user) => user.email === email && user.password === password);
+
+    if (UserLogin) {
+      // Store user info and set logged-in state
+      setUserName(UserLogin.name); // Assuming each user object has a 'name' field
+      setIsLoggedIn(true);
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userName', UserLogin.name); // Store the username or token as needed
+      alert("Login Successfully");
+    } else {
+      alert("Invalid email or password");
+    }
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserName('');
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userName');
+    alert("Logout Successfully!");
+  };
+
   return (
     <>
       <MainHeader />
-      <Header />
-
-      {/* //breadcrumb */}
+      <Header userName={userName} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
 
       <nav
         style={{
@@ -201,116 +76,121 @@ const Login = () => {
         }}
         aria-label="breadcrumb"
       >
-        
-
         <ol className="breadcrumb mt-3">
           <li className="breadcrumb-item ms-5">
             <a href="#" className="text-decoration-none">
               <IoHomeOutline className="top-1" /> Home
             </a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Login
           </li>
         </ol>
       </nav>
       <hr />
-      
-      {/* <div>
-        <div className="row">
-          <div className="col-4">
-            <img src="" alt="" />
-          </div>
 
+      {/* Conditionally render login form or dashboard */}
+      {!isLoggedIn ? (
+        <div>
+          <div className="row">
+            <div className="col-4">
+              <img src="" alt="" />
+            </div>
 
-          <div className="col-8">
-            <h1
-              style={{
-                fontWeight: "1000",
-                fontFamily: "serif",
-                fontSize: "bold",
-                textAlign:"left"
-              }}
-            >
-              Login
-            </h1>
-            <p style={{textAlign:"left"}}>
-              Don't have an account ?{" "}
-              <NavLink to={"/Signup"} style={{ textDecoration: "none" }}>
-                Create here
-              </NavLink>
-            </p>
-            <form>
-              <div class="mb-3 w-75">
-                
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="abc@gmail.com"
-                  style={{padding:"15px",backgroundColor:"#eefeff"}}
-                />
-                
-              </div>
-              <div class="mb-3 w-75">
-                
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Enter Your Password"
-                  style={{padding:"15px",backgroundColor:"#eefeff"}}
-
-                />
-              </div>
-              <p style={{textAlign:"left"}}><a href="" style={{textDecoration:"none" ,color:"black",opacity:"0.5"}}>Forget password ?</a></p>
-              <button type="submit" class="btn btn-danger me-auto py-2 px-4 " style={{left:"0", display: "block",  
-                  width: "25%" }}>
+            <div className="col-8">
+              <h1
+                style={{
+                  fontWeight: "1000",
+                  fontFamily: "serif",
+                  fontSize: "bold",
+                  textAlign: "left"
+                }}
+              >
                 Login
-              </button>
-            </form>
+              </h1>
+              <p style={{ textAlign: "left" }}>
+                Don't have an account?{" "}
+                <NavLink to={"/Signup"} style={{ textDecoration: "none" }}>
+                  Create here
+                </NavLink>
+              </p>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3 w-75">
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="abc@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{ padding: "15px", backgroundColor: "#eefeff" }}
+                  />
+                </div>
+                <div className="mb-3 w-75">
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter Your Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    style={{ padding: "15px", backgroundColor: "#eefeff" }}
+                  />
+                </div>
+                <p style={{ textAlign: "left" }}>
+                  <a href="#" style={{ textDecoration: "none", color: "black", opacity: "0.5" }}>
+                    Forget password?
+                  </a>
+                </p>
+                <button type="submit" className="btn btn-danger me-auto py-2 px-4" style={{ left: "0", display: "block", width: "25%" }}>
+                  Login
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>  */}
-      <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-3 d-flex flex-column">
-          <button 
-            className={`login_dashboard ${activeButton === 'dashboard' ? 'active' : ''}`} 
-            onClick={() => handleButtonClick('dashboard')}
-          >
-            Dashboard
-          </button>
-          <button 
-            className={`login_dashboard ${activeButton === 'orders' ? 'active' : ''}`} 
-            onClick={() => handleButtonClick('orders')}
-          >
-            Orders
-          </button>
-          <button 
-            className={`login_dashboard ${activeButton === 'account' ? 'active' : ''}`} 
-            onClick={() => handleButtonClick('account')}
-          >
-            Account Details
-          </button>
-          <button 
-            className={`login_dashboard ${activeButton === 'logout' ? 'active' : ''}`} 
-            onClick={() => handleButtonClick('logout')}
-          >
-            Logout
-          </button>
+      ) : (
+        // User Dashboard if logged in
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-3 d-flex flex-column">
+              <button
+                className={`login_dashboard ${activeButton === 'dashboard' ? 'active' : ''}`}
+                onClick={() => handleButtonClick('dashboard')}
+              >
+                <VscSettings /> Dashboard
+              </button>
+              <button
+                className={`login_dashboard ${activeButton === 'orders' ? 'active' : ''}`}
+                onClick={() => handleButtonClick('orders')}
+              >
+                <IoBagOutline /> Orders
+              </button>
+              <button
+                className={`login_dashboard ${activeButton === 'account' ? 'active' : ''}`}
+                onClick={() => handleButtonClick('account')}
+              >
+                <FaRegUser /> Account Details
+              </button>
+              <button
+                className={`login_dashboard ${activeButton === 'logout' ? 'active' : ''}`}
+                onClick={handleLogout}
+              >
+                <BiLogOut /> Logout
+              </button>
+            </div>
+
+            <div className="col-md-8">
+            {activeButton === 'dashboard' && <UserDashboard userName={userName} />}
+            {activeButton === 'orders' && <UserOrder/>}
+            {activeButton === 'account' && <UserAccount userName={userName}/>}
+            </div>
+          </div>
         </div>
-        <div className="col-md-8">
-          <h4 style={{left:"0"}}>Hello Aquib Shahzada</h4>
-          <p>From your account dashboard. you can easily check & view your recent orders,
-          manage your shipping and billing addresses and edit your password and account details.</p>
-        </div>
-      </div>
-    </div>
+      )}
+
       <Shipping />
       <Footer />
     </>
   );
 };
+
 export default Login;

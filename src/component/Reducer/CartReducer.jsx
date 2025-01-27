@@ -86,23 +86,6 @@
 const cartReducer = (state, action) => {
   switch (action.type) {
     // case "ADD_TO_CART": {
-    //   const { id, sunglasses, amount } = action.payload;
-    //   const existingProduct = state.cart.find((item) => item.id === id);
-
-    //   if (existingProduct) {
-    //     const updatedCart = state.cart.map((item) => 
-    //       item.id === id ? { ...item, quantity: item.quantity + amount } : item
-    //     );
-    //     return { ...state, cart: updatedCart };
-    //   } else {
-    //     const newItem = {
-    //       ...sunglasses,
-    //       id: id,
-    //       quantity: Number(amount) || 1,
-    //     };
-    //     return { ...state, cart: [...state.cart, newItem] };
-    //   }
-    // }
 
     case "ADD_TO_CART": {
       const { id, sunglasses, amount } = action.payload;

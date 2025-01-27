@@ -399,9 +399,12 @@ const Cart = () => {
                   </tr>
                 </tbody>
               </table>
+              <NavLink to={"/checkout"}>
               <button className="payment_button mt-2 w-75 buttons_In_cart">
                 Proceed To Payment
               </button>
+              </NavLink>
+              
             </div>
           </div>
         </div>
