@@ -56,6 +56,8 @@ const CartProvider = ({ children }) => {
   };
 
   // Save cart data to local storage on change
+  const userId = JSON.parse(localStorage.getItem("users"));
+  console.log(userId);
   useEffect(() => {
     dispatch({ type: "CART_TOTAL_PRICE" });
     localStorage.setItem("ZayanCart", JSON.stringify(state.cart));

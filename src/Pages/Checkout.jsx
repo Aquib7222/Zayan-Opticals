@@ -8,7 +8,15 @@ import { useCartContext } from "../component/Context/CartContext";
 const Checkout = () => {
   const { cart, total_amount } = useCartContext();
 
-  const totalGST = cart.reduce((acc, item) => acc + item.gstAmount, 0);
+  
+  // GST rate (5%)
+  const gstRate = 5;
+
+  // Calculate total GST for all items
+  const totalGST = cart.reduce((acc, item) => {
+    const gstAmount = (item.price * item.quantity) * (gstRate / 100);
+    return acc + gstAmount;
+  }, 0);
   return (
     <>
       <MainHeader />
@@ -166,8 +174,8 @@ const Checkout = () => {
                   <tbody>
                     {cart.map((item,index)=>(
                     <tr key={index}>
-                      <td className="text-start">{item.name}</td>
-                      <td>12%</td>
+                      <td className="text-start">{item.productName}</td>
+                      <td>5%</td>
                       <td>{item.quantity}</td>
                       <td className="text-end text-danger">
                         <h4>{item.price*item.quantity}</h4>
@@ -225,7 +233,7 @@ const Checkout = () => {
                         Grand Total
                       </th>
                       <td colspan="1" className="text-end">
-                        <h3 className="text-danger">Rs 1790</h3>
+                        <h3 className="text-danger">{total_amount+totalGST}</h3>
                       </td>
                     </tr>
                   </tbody>

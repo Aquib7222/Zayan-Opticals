@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import Footer from "../component/footer";
 import Header from "../component/Header";
 import MainHeader from "../component/MainHeader";
@@ -7,14 +7,23 @@ import { NavLink } from "react-router-dom";
 
 const Signup = () => {
   // Define state variables to capture form data
+  const [userId, setUserId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [userName,setUserName]=useState("");
+  const generateRandomId = () => {
+    return "user_" + Math.random().toString(36).substr(2, 9);
+  };
   // Handle form submission
+  useEffect(() => {
+    if (firstName && lastName) {
+      setUserName(firstName + " " + lastName); // Concatenate first and last name
+    }
+  }, [firstName, lastName]);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -35,13 +44,18 @@ const Signup = () => {
       return; // Prevent form submission if the email is already taken
     }
 
+     // Generate a random userId
+     const newUserId = generateRandomId();
+
     // Create a new user object
     const newUser = {
+      userId: newUserId,
       firstName,
       lastName,
       email,
       phone,
       password,
+      userName,
     };
 
     // Add the new user to the users array
@@ -51,12 +65,14 @@ const Signup = () => {
     localStorage.setItem("users", JSON.stringify(users));
 
     // Reset form fields
+    setUserId("");
     setFirstName("");
     setLastName("");
     setEmail("");
     setPhone("");
     setPassword("");
     setConfirmPassword("");
+    SetUserName("")
 
     // Optionally, you can display a success message
     alert("Registration successful!");

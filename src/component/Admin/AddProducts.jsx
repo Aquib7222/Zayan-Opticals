@@ -11,7 +11,8 @@ export const AddProducts= () =>{
         subCategory:"",
         image: null,
       });
-    
+      
+     
       // Load products from localStorage when the component mounts
       useEffect(() => {
         const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -57,7 +58,7 @@ export const AddProducts= () =>{
     
         const updatedProducts = [...products, newProduct];
         setProducts(updatedProducts);
-        localStorage.setItem("products", JSON.stringify(updatedProducts));
+        localStorage.setItem(productsKey, JSON.stringify(updatedProducts));
     
         alert("Product added successfully!");
     

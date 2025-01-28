@@ -8,7 +8,7 @@ body{
 .layout {
     display: flex;
     height: 100vh;
-    background-color: rgb(235, 238, 240);
+    background-color: rgb(246, 247, 248);
   }
   
   .sidebar {
@@ -33,5 +33,32 @@ body{
     overflow-y: auto; 
     height: calc(100vh - 60px);
   }
- 
+  .chart_container{
+    width: 93%;
+   
+    margin-left: 30px;
+    display: flex;
+  }
+ .chart_and_transaction{
+  background-color: #ffffff;  /* White background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  height: 300px;
+ }
+ .revenue{
+  width: 75%;
+ }
+ .transaction{
+  width: 25%;
+ }
+ @media(max-width:1000px){
+  .chart_container{
+    display: block;
+  }
+  .chart_and_transaction{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+ }
   

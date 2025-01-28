@@ -13,9 +13,11 @@ export const Category = () => {
 
  
 // Fetch data from local storage
-
+const adminValue = JSON.parse(localStorage.getItem("admin"));
+  const admin_id = adminValue.adminId;
+  const productsKey = `${admin_id}/products`;
 useEffect(() => {
-  const storedProducts = localStorage.getItem("products");
+  const storedProducts = localStorage.getItem(productsKey);
   if (storedProducts) {
     setProducts(JSON.parse(storedProducts));
     

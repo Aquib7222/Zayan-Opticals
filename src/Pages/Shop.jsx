@@ -13,6 +13,7 @@ import CartAmountToggle from "../component/CartAmountToggle";
 import { TiTick } from "react-icons/ti";
 import MainHeader from "../component/MainHeader";
 import { IoHomeOutline } from "react-icons/io5";
+import { useAuth } from "../component/Context/AuthContext";
 function Shop() {
   const [selectedOption, setSelectedOption] = useState("");
   const [viewMode, setViewMode] = useState("grid"); // State for grid/list view
@@ -20,13 +21,18 @@ function Shop() {
   const productsPerPage = 5; // Number of products per page
   const { addToCart } = useCartContext();
   // const [selectedCategory,setSelectedCategory]= useState("");
-
+  const { isLoggedIn } = useAuth();
 
   // drop down selection 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
+  const adminValue = JSON.parse(localStorage.getItem("admin"));
 
+  const admin_id = adminValue.adminId;
+ 
+
+  const productsKey = `${admin_id}/products`;
   
   const [selectedColor, setSelectedColor] = useState("red"); // Default selected color
   const colors = ["red", "blue", "green", "yellow", "purple"]; // Available colors
@@ -82,7 +88,7 @@ function Shop() {
   //retrieve products from localstorage
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    const storedProducts = localStorage.getItem("products");
+    const storedProducts = localStorage.getItem(productsKey);
     if (storedProducts) {
       setProducts(JSON.parse(storedProducts));
     }
@@ -110,8 +116,8 @@ function Shop() {
        
         className={`sunglasses-item ${viewMode === "list" ? "list-view" : ""}`}
       >
-         {console.log(sunglasses.id)}
-        <div className="product-container">
+         
+        <div className="product-container" >
           <img
             src={sunglasses.image}
             alt={sunglasses.productName}
@@ -124,6 +130,7 @@ function Shop() {
               <p>{sunglasses.details}</p>
             </>
           )}
+
         </div>
 
         <div className="quantity-buttons">
@@ -160,7 +167,11 @@ function Shop() {
               className="ms-3 bg-danger pb-2  "
               style={{ width: "100px" }}
               onClick={() => {
-                addToCart(sunglasses.id, sunglasses, amount[sunglasses.id] || 1);
+                if (isLoggedIn) {
+                  addToCart(sunglasses.id, sunglasses, amount[sunglasses.id] || 1);
+                } else {
+                  alert("Please log in first to add products to your cart.");
+                }
               }}
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"

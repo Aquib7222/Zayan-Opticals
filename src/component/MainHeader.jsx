@@ -4,9 +4,11 @@ import { NavLink,Link } from "react-router-dom";
 import { useState } from "react";
 import "./MainHeader.css";
 import Logo from "../Images/Logo.jpg";
+import { useAuth } from "./Context/AuthContext";
+
 const MainHeader = () => {
   const [isAccountHovered, setAccountHovered] = useState(false);
-
+  const { isLoggedIn,logout }=useAuth();
   return (
     <>
       <div className="container-fluid mb-0 py-0">
@@ -39,15 +41,34 @@ const MainHeader = () => {
               className="cursor-pointer ms-3 position-relative"
               onMouseEnter={() => setAccountHovered(true)}
               onMouseLeave={() => setAccountHovered(false)}
-            >
-              <FaRegUser /> Account
-              {isAccountHovered && (
-                <div className="dropdown-menu">
-                    <Link to={"/Login"} style={{ textDecoration: "none", color: "black" }}> <p>Login</p></Link>
-                 
-                  <p>Register</p>
-                </div>
-              )}
+            > {/* If logged in, show account options; otherwise, show login/register */}
+            {isLoggedIn ? (
+              <>
+                {isAccountHovered && (
+                  <div className="dropdown-menu">
+                    <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+                      <p>My Account</p>
+                    </Link>
+                    <button onClick={logout}>Logout</button>
+                  </div>
+                )}
+                <p>Account</p>
+              </>
+            ) : (
+              <>
+                <FaRegUser /> Account
+                {isAccountHovered && (
+                  <div className="dropdown-menu">
+                    <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+                      <p>Login</p>
+                    </Link>
+                    <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+                      <p>Register</p>
+                    </Link>
+                  </div>
+                )}
+              </>
+            )}
             </li>
           </div>
         </ul>

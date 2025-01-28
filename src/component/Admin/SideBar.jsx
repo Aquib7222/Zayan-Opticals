@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 import { FaBars } from "react-icons/fa";
 
-const Sidebar = ({ close }) => {
+const Sidebar = ({ close,handleLogout }) => {
   // const [close, setClose] = useState(false);
 
   return (
@@ -17,8 +17,10 @@ const Sidebar = ({ close }) => {
           <li>Products</li>
           <li>Customers</li>
           <li>Settings</li>
+          
         </ul>
       )}
+      <button onClick={handleLogout}  style={{backgroundColor:"brown",color:"white",padding:"10px",fontWeight:"600",borderRadius:"10px",marginTop:"100%"}}>Logout</button>
     </div>
   );
 };
