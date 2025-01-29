@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./ProductCustomer.css";
 
@@ -6,17 +5,22 @@ import { MdDeleteForever } from "react-icons/md";
 import { Category } from "./Category";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Customers from "./Customers";
+import Orders from "./Orders";
+
 const ProductCustomer = () => {
   const [showProducts, setShowProducts] = useState(false);
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [products, setProducts] = useState([]);
   const [showCategory, setShowCategory] = useState(false);
-  const [showCustomers,setShowCustomers]=useState(false);
-  //get how many users in local storage
-  const storedUsers = JSON.parse(localStorage.getItem('users'));
+  const [showCustomers, setShowCustomers] = useState(false);
+  const [showOrders, setShowOrders] = useState(false);
 
-// Check if the data exists and count the number of users
-const numberOfUsers = storedUsers ? storedUsers.length : 0;
+  // Track active section
+  const [activeSection, setActiveSection] = useState("products");
+
+  // Get how many users in local storage
+  const storedUsers = JSON.parse(localStorage.getItem('users'));
+  const numberOfUsers = storedUsers ? storedUsers.length : 0;
 
   // State to manage form inputs
   const [formData, setFormData] = useState({
@@ -27,6 +31,7 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
     subCategory: "",
     image: null,
   });
+
   const adminValue = JSON.parse(localStorage.getItem("admin"));
   const admin_id = adminValue.adminId;
   const productsKey = `${admin_id}/products`;
@@ -100,23 +105,15 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
     localStorage.setItem("products", JSON.stringify(updatedProducts));
   };
 
-  // Function to toggle between showing products and categories
-  const toggleCategory = () => {
-    setShowCategory(true);
-    setShowProducts(false);
-    setShowCustomers(false);
-  };
+  // Handle section switch
+  const handleSectionClick = (section) => {
+    setActiveSection(section);
 
-  const toggleProducts = () => {
-    setShowProducts(true);
-    setShowCategory(false);
-    setShowCustomers(false);
+    setShowProducts(section === "products");
+    setShowCategory(section === "category");
+    setShowCustomers(section === "customers");
+    setShowOrders(section === "orders");
   };
-  const toggleCustomer=()=>{
-    setShowProducts(false);
-    setShowProducts(false);
-    setShowCustomers(true);
-  }
 
   return (
     <>
@@ -124,7 +121,10 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
       <div className="m-3">
         <div className="row">
           <div className="col-sm-3 mb-sm-0">
-            <div className="card" onClick={toggleProducts}>
+            <div
+              className={` card ${activeSection === "products" ? "active1" : ""}`}
+              onClick={() => handleSectionClick("products")}
+            >
               <div className="card-body">
                 <h5 className="card-title">PRODUCTS</h5>
                 <p className="card-text">Total Products: {products.length}</p>
@@ -132,7 +132,10 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
             </div>
           </div>
           <div className="col-sm-3">
-            <div className="card" onClick={toggleCategory}>
+            <div
+              className={`card ${activeSection === "category" ? "active1" : ""}`}
+              onClick={() => handleSectionClick("category")}
+            >
               <div className="card-body">
                 <h5 className="card-title">CATEGORY</h5>
                 <p className="card-text">Total Categories: 4</p>
@@ -140,7 +143,10 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
             </div>
           </div>
           <div className="col-sm-3">
-            <div className="card" onClick={toggleCustomer}>
+            <div
+              className={`card ${activeSection === "customers" ? "active1" : ""}`}
+              onClick={() => handleSectionClick("customers")}
+            >
               <div className="card-body">
                 <h5 className="card-title">CUSTOMERS</h5>
                 <p className="card-text">Total Customers: {numberOfUsers}</p>
@@ -148,7 +154,10 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
             </div>
           </div>
           <div className="col-sm-3">
-            <div className="card">
+            <div
+              className={`card ${activeSection === "orders" ? "active1" : ""}`}
+              onClick={() => handleSectionClick("orders")}
+            >
               <div className="card-body">
                 <h5 className="card-title">ORDERS</h5>
                 <p className="card-text">Total Orders: 20</p>
@@ -182,7 +191,6 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
               </tr>
             </thead>
             <tbody>
-              {/* //products will be show in product list after clicked on products */}
               {products.length > 0 ? (
                 products.map((product, index) => (
                   <tr key={index}>
@@ -210,7 +218,7 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
                         onClick={() => handleDelete(index)}
                         style={{ color: "red" }}
                       />
-                      <BsThreeDotsVertical className="icon-curson  " />
+                      <BsThreeDotsVertical className="icon-curson" />
                     </td>
                   </tr>
                 ))
@@ -322,13 +330,16 @@ const numberOfUsers = storedUsers ? storedUsers.length : 0;
           </form>
         </div>
       )}
-      {/* add products end here */}
-      {showCategory && <Category products={products} />}
-      {showCustomers && <Customers/>}
+
+      {/* {activeSection === "products" && <Category products={products} />} */}
+      {activeSection === "category" && <Category products={products} />}
+      {activeSection === "customers" && <Customers />}
+      {activeSection === "orders" && <Orders  />}
+      {/* {showCategory && <Category products={products} />}
+      {showCustomers && <Customers />}
+      {showOrders && <Orders />} */}
     </>
   );
 };
 
 export default ProductCustomer;
-
-// ------------------------------------------------------

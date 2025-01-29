@@ -10,6 +10,7 @@ import CartAmountToggle from "../component/CartAmountToggle";
 import MainHeader from "../component/MainHeader";
 import Shipping from "../component/Shipping";
 import Footer from "../component/footer";
+import { useAuth } from "../component/Context/AuthContext";
 const Cart = () => {
   const {
     cart,
@@ -19,6 +20,11 @@ const Cart = () => {
     removeAllFromCart,
     updateCartQuantity,
   } = useCartContext();
+
+//   const { email } = useAuth();
+
+// const userCart = JSON.parse(localStorage.getItem(`${email}_ZayanCart`));
+// console.log("usercart:",userCart);
 
   const handleIncrement = (id, quantity) => {
     updateCartQuantity(id, quantity + 1);
@@ -31,6 +37,7 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <>
+      <MainHeader />
         <Header />
         <img
           src={BannerImage}

@@ -10,7 +10,7 @@ const Checkout = () => {
 
   
   // GST rate (5%)
-  const gstRate = 5;
+  const gstRate = 0;
 
   // Calculate total GST for all items
   const totalGST = cart.reduce((acc, item) => {
@@ -175,7 +175,7 @@ const Checkout = () => {
                     {cart.map((item,index)=>(
                     <tr key={index}>
                       <td className="text-start">{item.productName}</td>
-                      <td>5%</td>
+                      <td>included</td>
                       <td>{item.quantity}</td>
                       <td className="text-end text-danger">
                         <h4>{item.price*item.quantity}</h4>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import AdminHeader from "../component/Admin/AdminHeader";
 import SideBar from "../component/Admin/SideBar";
 import ProductCustomer from "../component/Admin/ProductCustomer";
+import BarChartExample from "../component/Admin/BarChatExample";
 import "./Admin.css";
 
 const Admin = () => {
@@ -56,6 +57,7 @@ const Admin = () => {
             
               <div className=" chart_and_transaction me-2 rounded-2 revenue">
                 <h5 className="text-start">Revenue Generated</h5>
+                <BarChartExample/>
                 <hr />
               </div>
               <div className=" chart_and_transaction rounded-2  transaction">

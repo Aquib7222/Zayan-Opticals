@@ -1,38 +1,4 @@
-// import { Children, createContext, useContext, useState } from "react";
 
-// const AuthContext = createContext();
-// export const useAuth =()=>{
-//     return useContext(AuthContext);
-// };
-
-// //auth provider
-
-// export const AuthProvider =({Children})=>{
-//     const [isLoggedIn,setIsLoggedIn]= useState(()=>{
-//         const savedState = localStorage.getItem("isLoggedIn");
-//         return savedState ? JSON.parse(savedState) : false;
-//     });
-
-
-//     const login = ()=>{
-//         setIsLoggedIn(true);
-//         localStorage.setItem("isLoggedIn", true);
-
-//     }
-//     const logout = ()=>{
-//         setIsLoggedIn(false);
-//         localStorage.removeItem("isLoggedIn");
-//     }
-
-//     return(
-
-//         <AuthContext.Provider value={{isLoggedIn,login,logout}}>
-//         {Children}
-//         </AuthContext.Provider>
-//     )
-// }
-
-// src/component/Context/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
 
 // Create the Auth Context
@@ -47,33 +13,41 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState(''); // Store email
 
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn');
     const storedUserName = localStorage.getItem('userName');
-
-    if (loggedIn === 'true' && storedUserName) {
+    const storedUserEmail = localStorage.getItem('userEmail');
+  
+    if (loggedIn === 'true' && storedUserName && storedUserEmail) {
       setIsLoggedIn(true);
       setUserName(storedUserName);
+      setEmail(storedUserEmail); // Set email on load
     }
-  }, []); // Only run once when the app loads
+  }, []);
+  
 
-  const login = (userName) => {
+  const login = (userName,userEmail) => {
     setIsLoggedIn(true);
     setUserName(userName);
+    setEmail(userEmail);
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('userName', userName);
+    localStorage.setItem('userEmail', userEmail);
   };
 
   const logout = () => {
     setIsLoggedIn(false);
     setUserName('');
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userName');
+    setEmail(''); // Clear email on logout
+    // localStorage.removeItem('isLoggedIn');
+    // localStorage.removeItem('userName');
+    // localStorage.removeItem('userEmail');
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, userName, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, userName,email, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

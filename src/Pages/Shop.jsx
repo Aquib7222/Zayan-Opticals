@@ -116,7 +116,10 @@ function Shop() {
        
         className={`sunglasses-item ${viewMode === "list" ? "list-view" : ""}`}
       >
-         
+          <NavLink
+              to={"/Product_view"}
+              state={{ sunglasses, quantity: amount[sunglasses.id] }}
+            >
         <div className="product-container" >
           <img
             src={sunglasses.image}
@@ -181,6 +184,7 @@ function Shop() {
             </button>
           </div>
         </div>
+        </NavLink>
       </div>
     ));
   };

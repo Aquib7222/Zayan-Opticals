@@ -1,4 +1,3 @@
-
 // import { NavLink } from "react-router-dom";
 // import Footer from "../component/footer";
 // import Header from "../component/Header";
@@ -21,7 +20,6 @@
 //   const [isLoggedIn, setIsLoggedIn] = useState(false);
 //   const [userName, setUserName] = useState('');
 //   const [activeButton, setActiveButton] = useState('dashboard');
-  
 
 //   // Check if the user is already logged in when the page loads or refreshes
 //   useEffect(() => {
@@ -43,7 +41,7 @@
 
 //     const users = JSON.parse(localStorage.getItem("users"));
 //     const UserLogin = users.find((user) => user.email === email && user.password === password);
-    
+
 //     if (UserLogin) {
 //       // Store user info and set logged-in state
 //       setUserName(UserLogin.firstName + UserLogin.lastName); // Assuming each user object has a 'name' field
@@ -69,7 +67,7 @@
 //     <>
 //       <MainHeader />
 //       <Header userName={userName} isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-      
+
 //       <nav
 //         style={{
 //           "--bs-breadcrumb-divider":
@@ -92,7 +90,7 @@
 
 //       {/* Conditionally render login form or dashboard */}
 //       {!isLoggedIn ? (
-        
+
 //       ) : (
 //         // User Dashboard if logged in
 //         <div className="container-fluid">
@@ -131,7 +129,7 @@
 //             </div>
 //           </div>
 //         </div>
-        
+
 //       )}
 
 //       <Shipping />
@@ -161,23 +159,26 @@ import Shipping from "../component/Shipping";
 import "./Login.css";
 const Login = () => {
   const { isLoggedIn, userName, login, logout } = useAuth(); // Destructure login, logout, and isLoggedIn from context
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [activeButton, setActiveButton] = useState('dashboard');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [activeButton, setActiveButton] = useState("dashboard");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
 
   useEffect(() => {
     if (isLoggedIn) {
-      alert("Already logged in");
     }
   }, [isLoggedIn]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("users"));
-    const userLogin = users.find((user) => user.email === email && user.password === password);
+    const userLogin = users.find(
+      (user) => user.email === email && user.password === password
+    );
 
     if (userLogin) {
-      login(userLogin.firstName); // Login and set userName
+      login(userLogin.firstName, userLogin.email);
       alert("Login Successfully");
     } else {
       alert("Invalid email or password");
@@ -196,7 +197,7 @@ const Login = () => {
   return (
     <>
       <MainHeader />
-      <Header  />
+      <Header />
 
       <nav aria-label="breadcrumb" className="mt-3">
         <ol className="breadcrumb">
@@ -205,91 +206,115 @@ const Login = () => {
               <IoHomeOutline className="top-1" /> Home
             </a>
           </li>
-          <li className="breadcrumb-item active" aria-current="page">Login</li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Login
+          </li>
         </ol>
       </nav>
 
       {!isLoggedIn ? (
         <div>
-        <div className="row">
-          <div className="col-4">
-            <img src="" alt="" />
-          </div>
+          <div className="row">
+            <div className="col-4">
+              <img src="" alt="" />
+            </div>
 
-          <div className="col-8">
-            <h1
-              style={{
-                fontWeight: "1000",
-                fontFamily: "serif",
-                fontSize: "bold",
-                textAlign: "left"
-              }}
-            >
-              Login
-            </h1>
-            <p style={{ textAlign: "left" }}>
-              Don't have an account?{" "}
-              <NavLink to={"/Signup"} style={{ textDecoration: "none" }}>
-                Create here
-              </NavLink>
-            </p>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3 w-75">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="abc@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{ padding: "15px", backgroundColor: "#eefeff" }}
-                />
-              </div>
-              <div className="mb-3 w-75">
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Enter Your Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  style={{ padding: "15px", backgroundColor: "#eefeff" }}
-                />
-              </div>
-              <p style={{ textAlign: "left" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black", opacity: "0.5" }}>
-                  Forget password?
-                </a>
-              </p>
-              <button type="submit" className="btn btn-danger me-auto py-2 px-4" style={{ left: "0", display: "block", width: "25%" }}>
+            <div className="col-8">
+              <h1
+                style={{
+                  fontWeight: "1000",
+                  fontFamily: "serif",
+                  fontSize: "bold",
+                  textAlign: "left",
+                }}
+              >
                 Login
-              </button>
-            </form>
+              </h1>
+              <p style={{ textAlign: "left" }}>
+                Don't have an account?{" "}
+                <NavLink to={"/Signup"} style={{ textDecoration: "none" }}>
+                  Create here
+                </NavLink>
+              </p>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3 w-75">
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="abc@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{ padding: "15px", backgroundColor: "#eefeff" }}
+                  />
+                </div>
+                <div className="mb-3 w-75">
+                  <input
+                    type={passwordVisible ? "text" : "password"}
+                    className="form-control"
+                    placeholder="Enter Your Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    style={{ padding: "15px", backgroundColor: "#eefeff" }}
+                  />
+                  <button type="button" onClick={togglePasswordVisibility}>
+                    {passwordVisible ? "Hide" : "Show"}
+                  </button>
+                </div>
+                <p style={{ textAlign: "left" }}>
+                  <a
+                    href="#"
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                      opacity: "0.5",
+                    }}
+                  >
+                    Forget password?
+                  </a>
+                </p>
+                <button
+                  type="submit"
+                  className="btn btn-danger me-auto py-2 px-4"
+                  style={{ left: "0", display: "block", width: "25%" }}
+                >
+                  Login
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
       ) : (
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-3 d-flex flex-column">
               <button
-                className={`login_dashboard ${activeButton === 'dashboard' ? 'active' : ''}`}
-                onClick={() => handleButtonClick('dashboard')}
+                className={`login_dashboard ${
+                  activeButton === "dashboard" ? "active" : ""
+                }`}
+                onClick={() => handleButtonClick("dashboard")}
               >
                 <VscSettings /> Dashboard
               </button>
               <button
-                className={`login_dashboard ${activeButton === 'orders' ? 'active' : ''}`}
-                onClick={() => handleButtonClick('orders')}
+                className={`login_dashboard ${
+                  activeButton === "orders" ? "active" : ""
+                }`}
+                onClick={() => handleButtonClick("orders")}
               >
                 <IoBagOutline /> Orders
               </button>
               <button
-                className={`login_dashboard ${activeButton === 'account' ? 'active' : ''}`}
-                onClick={() => handleButtonClick('account')}
+                className={`login_dashboard ${
+                  activeButton === "account" ? "active" : ""
+                }`}
+                onClick={() => handleButtonClick("account")}
               >
                 <FaRegUser /> Account Details
               </button>
               <button
-                className={`login_dashboard ${activeButton === 'logout' ? 'active' : ''}`}
+                className={`login_dashboard ${
+                  activeButton === "logout" ? "active" : ""
+                }`}
                 onClick={handleLogout}
               >
                 <BiLogOut /> Logout
@@ -297,9 +322,13 @@ const Login = () => {
             </div>
 
             <div className="col-md-8">
-              {activeButton === 'dashboard' && <UserDashboard userName={userName} />}
-              {activeButton === 'orders' && <UserOrder />}
-              {activeButton === 'account' && <UserAccount userName={userName} />}
+              {activeButton === "dashboard" && (
+                <UserDashboard userName={userName} />
+              )}
+              {activeButton === "orders" && <UserOrder />}
+              {activeButton === "account" && (
+                <UserAccount userName={userName} />
+              )}
             </div>
           </div>
         </div>

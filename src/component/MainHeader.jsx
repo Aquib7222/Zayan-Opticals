@@ -62,7 +62,7 @@ const MainHeader = () => {
                     <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
                       <p>Login</p>
                     </Link>
-                    <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+                    <Link to="/signup" style={{ textDecoration: "none", color: "black" }}>
                       <p>Register</p>
                     </Link>
                   </div>
